@@ -101,9 +101,11 @@ function moveUp() {
 }
 
 function checkCollision() {
-	$('.bullet').each(function() {
+	var bullets = $('.bullet');
+	var enemies = $('.enemy');
+	bullets.each(function() {
 		var $that = $(this);
-		$('.enemy').each(function() {
+		enemies.each(function() {
 			if (collision($that, $(this))) {
 				if (($that.hasClass('red') && $(this).hasClass('color1')) || ($that.hasClass('blue') && $(this).hasClass('color2')) || ($that.hasClass('green') && $(this).hasClass('color3')) || ($that.hasClass('yellow') && $(this).hasClass('color4'))) {
 					$(this).addClass('remove');
@@ -111,6 +113,7 @@ function checkCollision() {
 					$('.score').html(score);
 				}
 				$that.addClass('remove');
+				return;
 			}
 		});
 	});
