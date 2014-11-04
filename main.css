@@ -1,0 +1,157 @@
+body {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-color: rgb(111,106,103);
+	font-family: sans-serif;
+}
+
+body.red {
+	background-color: red;
+}
+
+.container {
+	max-height: 100%;
+	width: 100%;
+	overflow: hidden;
+	height: 500px;
+	background-color: #fff;
+}
+
+.gameOver {
+	width: 200px;
+	background-color: lightseagreen;
+	border-radius: 5px;
+	text-align: center;
+	padding: 20px;
+	color: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -120px;
+	display: none;
+}
+
+.gameOver .title {
+	font-size: 24px;
+	margin-bottom: 40px;
+	color: rgba(0,0,0,0.8);
+	font-weight: bold;
+}
+
+.gameOver .refresh {
+	font-size: 10px;
+	margin-top: 40px;
+	font-weight: bold;
+}
+
+.scoreboard {
+	padding: 20px;
+	color: rgba(0,0,0,0.5);
+	font-size: 18px;
+}
+
+.score, .lives {
+	color: rgba(0,0,0,0.8);
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.createdBy {
+	float: right;
+	font-size: 10px;
+}
+
+.character {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background-image: url(character.png);
+	background-size: auto 50px;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.bullet {
+	height: 6px;
+	width: 15px;
+	background-color: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.bullet.red {
+	background-color: red;
+}
+
+.bullet.blue {
+	background-color: blue;
+}
+
+.bullet.green {
+	background-color: limegreen;
+}
+
+.bullet.yellow {
+	background-color: gold;
+}
+
+.enemy {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(enemy.png);
+	background-size: auto 50px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.enemy.color1:after {
+	content: "";
+	background-color: red;
+	height: 17px;
+	width: 3px;
+	top: 0;
+	left: 1px;
+	position: absolute;
+}
+
+.enemy.color2:after {
+	content: "";
+	background-color: blue;
+	height: 17px;
+	width: 3px;
+	top: 1px;
+	left: 1px;
+	position: absolute;
+}
+
+.enemy.color3:after {
+	content: "";
+	background-color: limegreen;
+	height: 17px;
+	width: 3px;
+	top: 1px;
+	left: 1px;
+	position: absolute;
+}
+
+.enemy.color4:after {
+	content: "";
+	background-color: gold;
+	height: 17px;
+	width: 3px;
+	top: 1px;
+	left: 1px;
+	position: absolute;
+}
+
+.remove {
+	display: none;
+}
