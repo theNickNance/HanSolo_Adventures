@@ -7,16 +7,24 @@ var config = {
 	enemyHeight: 50,
 	enemyWidth: 50,
 	bulletHeight: 6,
-	bulletWidth: 15
+	bulletWidth: 15,
+	colors: ['red', 'blue', 'green', 'yellow']
 };
+
 var keys = {};
+
+var bulletPos = {};
+var enemyPos = {};
+
+var enemyId = 0;
+var bulletId = 0;
+
 var posLeft = 50;
 var posTop = 50;
-var rotation = 0;
 var $character = $('.character');
+
 var score = 0;
 var lives = 3;
-var colors = ['red', 'blue', 'green', 'yellow'];
 
 document.addEventListener('keydown', function (e) {
     keys[e.which] = true;
@@ -24,13 +32,17 @@ document.addEventListener('keydown', function (e) {
 
 document.addEventListener('keyup', function (e) {
 	if (e.which == 39) {
-		new Bullet('red');
+		new Bullet('red', bulletId);
+		bulletId++;
 	} else if (e.which == 37) {
-		new Bullet('blue');
+		new Bullet('blue', bulletId);
+		bulletId++;
 	} else if (e.which == 38) {
-		new Bullet('green');
+		new Bullet('green', bulletId);
+		bulletId++;
 	} else if (e.which == 40) {
-		new Bullet('yellow');
+		new Bullet('yellow', bulletId);
+		bulletId++;
 	} else {
 		delete keys[e.which];
 	}
@@ -39,7 +51,8 @@ document.addEventListener('keyup', function (e) {
 var gameLoop = window.setInterval(function(){
   	moveChar();
   	if (Math.floor((Math.random() * 1000) + 1) < 10) {
-  		new Enemy();
+  		new Enemy(enemyId);
+  		enemyId++;
   	}
 
   	checkCollision();
@@ -108,35 +121,33 @@ function moveUp() {
 }
 
 function checkCollision() {
-	var bullets = $('.bullet');
-	var enemies = $('.enemy');
-	bullets.each(function() {
-		var $that = $(this);
-		enemies.each(function() {
-			if (collision($that, $(this))) {
-				if (($that.hasClass('red') && $(this).hasClass('red')) || ($that.hasClass('blue') && $(this).hasClass('blue')) || ($that.hasClass('green') && $(this).hasClass('green')) || ($that.hasClass('yellow') && $(this).hasClass('yellow'))) {
-					$(this).addClass('remove');
+	for (var bullet in bulletPos) {
+		for (var enemy in enemyPos) {
+			if (collision(bulletPos[bullet], enemyPos[enemy])) {
+				var $bullet = $('#bullet' + bullet);
+				var $enemy = $('#enemy' + enemy);
+				if ($bullet.data('color') == $enemy.data('color')) {
+					$enemy.addClass('remove');
+
 					score++;
 					$('.score').html(score);
 				}
-				$that.addClass('remove');
+				$bullet.addClass('remove');
 				return;
 			}
-		});
-	});
+		}
+	}
 }
 
-function collision($div1, $div2) {
-	var off1 = $div1.offset();
-	var off2 = $div2.offset();
+function collision(bullet, enemy) {
 
-	var x1 = off1.left;
-	var y1 = off1.top;
+	var x1 = bullet[0];
+	var y1 = bullet[1];
 	var b1 = y1 + config.bulletWidth;
 	var r1 = x1 + config.bulletHeight;
 
-	var x2 = off2.left;
-	var y2 = off2.top;
+	var x2 = enemy[0];
+	var y2 = enemy[1];
 	var b2 = y2 + config.enemyWidth;
 	var r2 = x2 + config.enemyHeight;
 

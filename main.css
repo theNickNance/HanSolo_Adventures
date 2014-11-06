@@ -27,7 +27,7 @@ body.red {
 	padding: 20px;
 	color: rgba(0,0,0,0.5);
 	position: absolute;
-	top: 200px;
+	top: 100px;
 	left: 50%;
 	margin-left: -120px;
 	display: none;
@@ -52,7 +52,7 @@ body.red {
 	font-size: 18px;
 }
 
-.score, .lives {
+.score, .lives, .fired, .spawned {
 	color: rgba(0,0,0,0.8);
 	font-weight: bold;
 	margin-right: 10px;
