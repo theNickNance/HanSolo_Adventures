@@ -10,8 +10,8 @@ var config = {
 	bulletWidth: 15
 };
 var keys = {};
-var posLeft = 0;
-var posTop = 0;
+var posLeft = 50;
+var posTop = 50;
 var rotation = 0;
 var $character = $('.character');
 var score = 0;
@@ -38,7 +38,7 @@ document.addEventListener('keyup', function (e) {
 
 var gameLoop = window.setInterval(function(){
   	moveChar();
-  	if ((Math.random() * 1000) < 10) {
+  	if (Math.floor((Math.random() * 1000) + 1) < 10) {
   		new Enemy();
   	}
 
