@@ -2,8 +2,8 @@ function Bullet(color) {
 	this.bullet = $('<div class="bullet ' + color + '"></div>');
 	this.shoot = function() {
 		var that = this;
-		var startLeft = $('.character').offset().left + 50;
-		var startTop = $('.character').offset().top + 25 - 3;
+		var startLeft = $('.character').offset().left + config.characterWidth;
+		var startTop = $('.character').offset().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
 		var end = $('.container').width();
 		this.bullet.css('left', startLeft + 'px');
 		this.bullet.css('top', startTop + 'px');

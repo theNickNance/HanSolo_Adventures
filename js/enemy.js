@@ -1,9 +1,9 @@
 function Enemy() {
 	this.startLeft = $('.container').width();
-	this.startTop = Math.floor((Math.random() * ($('.container').height() - 50)) + 1);
+	this.startTop = (Math.random() * (config.containerHeight - 50));
 	this.speed = Math.floor((Math.random() * 10) + 1);
-	this.colored = Math.floor((Math.random() * 4) + 1);
-	this.enemy = $('<div class="enemy ' + 'color' +  this.colored + '"></div>');
+	this.colored = Math.floor((Math.random() * 4) + 0);
+	this.enemy = $('<div class="enemy ' + colors[this.colored] + '"></div>');
 	this.attack = function() {
 		var that = this;
 		this.enemy.css('left', this.startLeft + 'px');

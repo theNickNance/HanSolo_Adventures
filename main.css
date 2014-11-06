@@ -112,7 +112,7 @@ body.red {
 	background-position: left center;
 }
 
-.enemy.color1:after {
+.enemy.red:after {
 	content: "";
 	background-color: red;
 	height: 17px;
@@ -122,7 +122,7 @@ body.red {
 	position: absolute;
 }
 
-.enemy.color2:after {
+.enemy.blue:after {
 	content: "";
 	background-color: blue;
 	height: 17px;
@@ -132,7 +132,7 @@ body.red {
 	position: absolute;
 }
 
-.enemy.color3:after {
+.enemy.green:after {
 	content: "";
 	background-color: limegreen;
 	height: 17px;
@@ -142,7 +142,7 @@ body.red {
 	position: absolute;
 }
 
-.enemy.color4:after {
+.enemy.yellow:after {
 	content: "";
 	background-color: gold;
 	height: 17px;

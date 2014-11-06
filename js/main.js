@@ -1,6 +1,13 @@
 var config = {
 	moveDistance: 2,
-	rotateDistance: 1
+	rotateDistance: 1,
+	containerHeight: 500,
+	characterHeight: 50,
+	characterWidth: 50,
+	enemyHeight: 50,
+	enemyWidth: 50,
+	bulletHeight: 6,
+	bulletWidth: 15
 };
 var keys = {};
 var posLeft = 0;
@@ -9,7 +16,7 @@ var rotation = 0;
 var $character = $('.character');
 var score = 0;
 var lives = 3;
-var colors = ['', 'red', 'blue', 'green', 'yellow'];
+var colors = ['red', 'blue', 'green', 'yellow'];
 
 document.addEventListener('keydown', function (e) {
     keys[e.which] = true;
@@ -31,7 +38,7 @@ document.addEventListener('keyup', function (e) {
 
 var gameLoop = window.setInterval(function(){
   	moveChar();
-  	if ((Math.floor((Math.random() * 1000) + 1)) < 10) {
+  	if ((Math.random() * 1000) < 10) {
   		new Enemy();
   	}
 
@@ -52,7 +59,7 @@ function moveChar() {
 	}
 
 	if (keys['83']) {
-		if (posTop != ($('.container').height() - 50)) {
+		if (posTop != (config.containerHeight - 50)) {
 			moveDown();
 		}
 	}
@@ -84,8 +91,8 @@ function moveLeft() {
 
 function moveDown() {
 	var pos = posTop + config.moveDistance;
-	if (pos > $('.container').height() - 50) {
-		pos = $('.container').height() - 50;
+	if (pos > config.containerHeight - 50) {
+		pos = config.containerHeight - 50;
 	}
 	$character.css('top', pos + 'px');
 	posTop += config.moveDistance;
@@ -107,7 +114,7 @@ function checkCollision() {
 		var $that = $(this);
 		enemies.each(function() {
 			if (collision($that, $(this))) {
-				if (($that.hasClass('red') && $(this).hasClass('color1')) || ($that.hasClass('blue') && $(this).hasClass('color2')) || ($that.hasClass('green') && $(this).hasClass('color3')) || ($that.hasClass('yellow') && $(this).hasClass('color4'))) {
+				if (($that.hasClass('red') && $(this).hasClass('red')) || ($that.hasClass('blue') && $(this).hasClass('blue')) || ($that.hasClass('green') && $(this).hasClass('green')) || ($that.hasClass('yellow') && $(this).hasClass('yellow'))) {
 					$(this).addClass('remove');
 					score++;
 					$('.score').html(score);
@@ -125,13 +132,13 @@ function collision($div1, $div2) {
 
 	var x1 = off1.left;
 	var y1 = off1.top;
-	var b1 = y1 + 6;
-	var r1 = x1 + 15;
+	var b1 = y1 + config.bulletWidth;
+	var r1 = x1 + config.bulletHeight;
 
 	var x2 = off2.left;
 	var y2 = off2.top;
-	var b2 = y2 + 50;
-	var r2 = x2 + 50;
+	var b2 = y2 + config.enemyWidth;
+	var r2 = x2 + config.enemyHeight;
 
 	if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
 	return true;
