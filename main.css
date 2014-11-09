@@ -64,24 +64,142 @@ body.red {
 }
 
 .character {
-	height: 50px;
-	width: 50px;
+	height: 75px;
+	width: 75px;
 	position: absolute;
 	top: 50px;
 	left: 50px;
-	background-image: url(character.png);
-	background-size: auto 50px;
-	background-repeat: no-repeat;
-	background-position: right center;
+}
+
+.han-solo {
+	height: 1em;
+	width: 1em;
+	position: absolute;
+	top: 35px;
+	right: 40px;
+	font-size: 4px;
+
+	/* Body */
+	box-shadow:
+		-3em -8em 0 rgb(100,60,30),
+		-2em -8em 0 rgb(100,60,30),
+		-1em -8em 0 rgb(100,60,30),
+
+		-4em -7em 0 rgb(100,60,30),
+		-3em -7em 0 rgb(100,60,30),
+		-2em -7em 0 rgb(100,60,30),
+		-1em -7em 0 rgb(100,60,30),
+		0 -7em 0 rgb(100,60,30),
+
+		-4em -6em 0 rgb(100,60,30),
+		-3em -6em 0 rgb(100,60,30),
+		-2em -6em 0 rgb(250,185,120),
+		-1em -6em 0 rgb(250,185,120),
+		0 -6em 0 rgb(250,185,120),
+
+		-4em -5em 0 rgb(100,60,30),
+		-3em -5em 0 rgb(250,185,120),
+		-2em -5em 0 black,
+		-1em -5em 0 rgb(250,185,120),
+		0 -5em 0 black,
+
+		-4em -4em 0 rgb(100,60,30),
+		-3em -4em 0 rgb(250,185,120),
+		-2em -4em 0 rgb(250,185,120),
+		-1em -4em 0 rgb(250,185,120),
+		0 -4em 0 rgb(250,185,120),
+		1em -4em 0 rgb(250,185,120),
+
+		-4em -3em 0 rgb(250,185,120),
+		-3em -3em 0 rgb(250,185,120),
+		-2em -3em 0 rgb(250,185,120),
+		-1em -3em 0 rgb(250,185,120),
+		0 -3em 0 rgb(250,185,120),
+
+		-4em -2em 0 rgb(100,60,30),
+		-3em -2em 0 rgb(250,185,120),
+		-2em -2em 0 rgb(250,185,120),
+
+		6em -1em 0 black,
+		5em -1em 0 black,
+		-3em -1em 0 rgb(250,185,120),
+		-2em -1em 0 rgb(250,185,120),
+		-1em -1em 0 rgb(250,185,120),
+		0 -1em 0 rgb(250,185,120),
+
+		10em 0 0 black,
+		9em 0 0 black,
+		8em 0 0 black,
+		7em 0 0 black,
+		6em 0 0 black,
+		5em 0 0 black,
+		4em 0 0 black,
+		-2em 0 0 rgb(250,185,120),
+		-1em 0 0 rgb(250,185,120),
+		
+		-4em 1em 0 rgb(220,220,180),
+		-3em 1em 0 black,
+		-2em 1em 0 rgb(220,220,180),
+		-1em 1em 0 rgb(250,185,120),
+		0 1em 0 black,
+		1em 1em 0 rgb(220,220,180),
+		2em 1em 0 rgb(220,220,180),
+		3em 1em 0 rgb(220,220,180),
+		4em 1em 0 rgb(220,220,180),
+		5em 1em 0 rgb(250,185,120),
+		6em 1em 0 black,
+		7em 1em 0 black,
+
+		-5em 2em 0 rgb(220,220,180),
+		-4em 2em 0 rgb(220,220,180),
+		-3em 2em 0 black,
+		-2em 2em 0 rgb(220,220,180),
+		-1em 2em 0 rgb(220,220,180),
+		0 2em 0 black,
+		5em 2em 0 black,
+		6em 2em 0 black,
+
+		-5em 3em 0 rgb(220,220,180),
+		-3em 3em 0 rgb(220,220,180),
+		-2em 3em 0 rgb(220,220,180),
+		-1em 3em 0 rgb(220,220,180),
+		0 3em 0 rgb(220,220,180),
+
+		-5em 4em 0 rgb(220,220,180),
+		-3em 4em 0 black,
+		-2em 4em 0 black,
+		-1em 4em 0 grey,
+		0 4em 0 black,
+
+		-5em 5em 0 rgb(250,185,120),
+		-3em 5em 0 black,
+		-2em 5em 0 black,
+		-1em 5em 0 black,
+		0 5em 0 black,
+
+		-3em 6em 0 black,
+		0 6em 0 black,
+
+		-3em 7em 0 black,
+		0 7em 0 black,
+
+		-3em 8em 0 black,
+		0 8em 0 black,
+
+		-3em 9em 0 black,
+		-2em 9em 0 black,
+		0 9em 0 black,
+		1em 9em 0 black;
 }
 
 .bullet {
-	height: 6px;
-	width: 15px;
+	height: 4px;
+	width: 20px;
 	background-color: black;
 	position: absolute;
 	top: 0;
 	left: 0;
+	border-radius: 2px;
 }
 
 .bullet.red {
@@ -101,55 +219,566 @@ body.red {
 }
 
 .enemy {
-	height: 50px;
-	width: 50px;
+	height: 75px;
+	width: 75px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-image: url(enemy.png);
-	background-size: auto 50px;
-	background-repeat: no-repeat;
-	background-position: left center;
 }
 
-.enemy.red:after {
-	content: "";
-	background-color: red;
-	height: 17px;
-	width: 3px;
-	top: 0;
-	left: 1px;
+.vader {
+	height: 1em;
+	width: 1em;
 	position: absolute;
+	top: 35px;
+	left: 28px;
+	font-size: 4px;
+
+	box-shadow:
+		-7em -9em 0 red,
+
+		-7em -8em 0 red,
+		-3em -8em 0 black,
+		-2em -8em 0 black,
+		-1em -8em 0 black,
+
+		-7em -7em 0 red,
+		-4em -7em 0 black,
+		-3em -7em 0 black,
+		-2em -7em 0 black,
+		-1em -7em 0 black,
+		0 -7em 0 black,
+
+		-7em -6em 0 red,
+		-4em -6em 0 black,
+		-3em -6em 0 black,
+		-2em -6em 0 black,
+		-1em -6em 0 black,
+		0 -6em 0 black,
+
+		-7em -5em 0 red,
+		-4em -5em 0 red,
+		-3em -5em 0 black,
+		-2em -5em 0 red,
+		-1em -5em 0 red,
+		0 -5em 0 black,
+
+		-7em -4em 0 red,
+		-4em -4em 0 black,
+		-3em -4em 0 rgb(120,120,120),
+		-2em -4em 0 black,
+		-1em -4em 0 black,
+		0 -4em 0 rgb(54,54,54),
+
+		-7em -3em 0 rgb(120,120,120),
+		-4em -3em 0 black,
+		-3em -3em 0 rgb(54,54,54),
+		-2em -3em 0 black,
+		-1em -3em 0 black,
+		0 -3em 0 black,
+
+		-7em -2em 0 black,
+		-5em -2em 0 black,
+		-4em -2em 0 rgb(54,54,54),
+		-3em -2em 0 black,
+		-2em -2em 0 rgb(54,54,54),
+		-1em -2em 0 black,
+		0 -2em 0 black,
+		1em -2em 0 rgb(54,54,54),
+
+		-7em -1em 0 rgb(120,120,120),
+		-5em -1em 0 rgb(54,54,54),
+		-4em -1em 0 black,
+		-3em -1em 0 black,
+		-2em -1em 0 black,
+		-1em -1em 0 rgb(54,54,54),
+		0 -1em 0 black,
+		1em -1em 0 black,
+
+		-7em 0 0 black,
+		-3em 0 0 rgb(120,120,120),
+		-2em 0 0 rgb(120,120,120),
+		-1em 0 0 rgb(120,120,120),
+
+		-7em 1em 0 black,
+		-6em 1em 0 black,
+		-5em 1em 0 black,
+		-4em 1em 0 rgb(120,120,120),
+		-3em 1em 0 black,
+		-2em 1em 0 black,
+		-1em 1em 0 black,
+		0 1em 0 rgb(120,120,120),
+
+		-5em 2em 0 rgb(54,54,54),
+		-4em 2em 0 black,
+		-3em 2em 0 black,
+		-2em 2em 0 black,
+		-1em 2em 0 black,
+		0 2em 0 black,
+		1em 2em 0 black,
+
+		-5em 3em 0 rgb(54,54,54),
+		-4em 3em 0 black,
+		-3em 3em 0 rgb(120,120,120),
+		-2em 3em 0 red,
+		-1em 3em 0 black,
+		0 3em 0 rgb(54,54,54),
+		1em 3em 0 black,
+
+		-5em 4em 0 rgb(54,54,54),
+		-4em 4em 0 black,
+		-3em 4em 0 black,
+		-2em 4em 0 black,
+		-1em 4em 0 black,
+		0 4em 0 rgb(54,54,54),
+		1em 4em 0 black,
+
+		-4em 5em 0 black,
+		-3em 5em 0 rgb(120,120,120),
+		-2em 5em 0 rgb(120,120,120),
+		-1em 5em 0 black,
+		0 5em 0 rgb(54,54,54),
+		1em 5em 0 black,
+
+		-4em 6em 0 black,
+		-3em 6em 0 black,
+		-2em 6em 0 black,
+		-1em 6em 0 black,
+		0 6em 0 rgb(54,54,54),
+		1em 6em 0 black,
+		2em 6em 0 rgb(54,54,54),
+
+		-4em 7em 0 black,
+		-3em 7em 0 rgb(54,54,54),
+		-2em 7em 0 rgb(54,54,54),
+		-1em 7em 0 black,
+		0 7em 0 rgb(54,54,54),
+		1em 7em 0 rgb(54,54,54),
+		2em 7em 0 rgb(54,54,54),
+
+		-4em 8em 0 black,
+		-2em 8em 0 rgb(54,54,54),
+		-1em 8em 0 black,
+		0 8em 0 rgb(54,54,54),
+		1em 8em 0 rgb(54,54,54),
+		2em 8em 0 rgb(54,54,54),
+		3em 8em 0 rgb(54,54,54),
+
+		-5em 9em 0 black,
+		-4em 9em 0 black,
+		-2em 9em 0 black,
+		-1em 9em 0 black;
 }
 
-.enemy.blue:after {
-	content: "";
-	background-color: blue;
-	height: 17px;
-	width: 3px;
-	top: 1px;
-	left: 1px;
-	position: absolute;
+.enemy.blue .vader {
+	box-shadow:
+		-7em -9em 0 blue,
+
+		-7em -8em 0 blue,
+		-3em -8em 0 black,
+		-2em -8em 0 black,
+		-1em -8em 0 black,
+
+		-7em -7em 0 blue,
+		-4em -7em 0 black,
+		-3em -7em 0 black,
+		-2em -7em 0 black,
+		-1em -7em 0 black,
+		0 -7em 0 black,
+
+		-7em -6em 0 blue,
+		-4em -6em 0 black,
+		-3em -6em 0 black,
+		-2em -6em 0 black,
+		-1em -6em 0 black,
+		0 -6em 0 black,
+
+		-7em -5em 0 blue,
+		-4em -5em 0 blue,
+		-3em -5em 0 black,
+		-2em -5em 0 blue,
+		-1em -5em 0 blue,
+		0 -5em 0 black,
+
+		-7em -4em 0 blue,
+		-4em -4em 0 black,
+		-3em -4em 0 rgb(120,120,120),
+		-2em -4em 0 black,
+		-1em -4em 0 black,
+		0 -4em 0 rgb(54,54,54),
+
+		-7em -3em 0 rgb(120,120,120),
+		-4em -3em 0 black,
+		-3em -3em 0 rgb(54,54,54),
+		-2em -3em 0 black,
+		-1em -3em 0 black,
+		0 -3em 0 black,
+
+		-7em -2em 0 black,
+		-5em -2em 0 black,
+		-4em -2em 0 rgb(54,54,54),
+		-3em -2em 0 black,
+		-2em -2em 0 rgb(54,54,54),
+		-1em -2em 0 black,
+		0 -2em 0 black,
+		1em -2em 0 rgb(54,54,54),
+
+		-7em -1em 0 rgb(120,120,120),
+		-5em -1em 0 rgb(54,54,54),
+		-4em -1em 0 black,
+		-3em -1em 0 black,
+		-2em -1em 0 black,
+		-1em -1em 0 rgb(54,54,54),
+		0 -1em 0 black,
+		1em -1em 0 black,
+
+		-7em 0 0 black,
+		-3em 0 0 rgb(120,120,120),
+		-2em 0 0 rgb(120,120,120),
+		-1em 0 0 rgb(120,120,120),
+
+		-7em 1em 0 black,
+		-6em 1em 0 black,
+		-5em 1em 0 black,
+		-4em 1em 0 rgb(120,120,120),
+		-3em 1em 0 black,
+		-2em 1em 0 black,
+		-1em 1em 0 black,
+		0 1em 0 rgb(120,120,120),
+
+		-5em 2em 0 rgb(54,54,54),
+		-4em 2em 0 black,
+		-3em 2em 0 black,
+		-2em 2em 0 black,
+		-1em 2em 0 black,
+		0 2em 0 black,
+		1em 2em 0 black,
+
+		-5em 3em 0 rgb(54,54,54),
+		-4em 3em 0 black,
+		-3em 3em 0 rgb(120,120,120),
+		-2em 3em 0 blue,
+		-1em 3em 0 black,
+		0 3em 0 rgb(54,54,54),
+		1em 3em 0 black,
+
+		-5em 4em 0 rgb(54,54,54),
+		-4em 4em 0 black,
+		-3em 4em 0 black,
+		-2em 4em 0 black,
+		-1em 4em 0 black,
+		0 4em 0 rgb(54,54,54),
+		1em 4em 0 black,
+
+		-4em 5em 0 black,
+		-3em 5em 0 rgb(120,120,120),
+		-2em 5em 0 rgb(120,120,120),
+		-1em 5em 0 black,
+		0 5em 0 rgb(54,54,54),
+		1em 5em 0 black,
+
+		-4em 6em 0 black,
+		-3em 6em 0 black,
+		-2em 6em 0 black,
+		-1em 6em 0 black,
+		0 6em 0 rgb(54,54,54),
+		1em 6em 0 black,
+		2em 6em 0 rgb(54,54,54),
+
+		-4em 7em 0 black,
+		-3em 7em 0 rgb(54,54,54),
+		-2em 7em 0 rgb(54,54,54),
+		-1em 7em 0 black,
+		0 7em 0 rgb(54,54,54),
+		1em 7em 0 rgb(54,54,54),
+		2em 7em 0 rgb(54,54,54),
+
+		-4em 8em 0 black,
+		-2em 8em 0 rgb(54,54,54),
+		-1em 8em 0 black,
+		0 8em 0 rgb(54,54,54),
+		1em 8em 0 rgb(54,54,54),
+		2em 8em 0 rgb(54,54,54),
+		3em 8em 0 rgb(54,54,54),
+
+		-5em 9em 0 black,
+		-4em 9em 0 black,
+		-2em 9em 0 black,
+		-1em 9em 0 black;
 }
 
-.enemy.green:after {
-	content: "";
-	background-color: limegreen;
-	height: 17px;
-	width: 3px;
-	top: 1px;
-	left: 1px;
-	position: absolute;
+.enemy.yellow .vader {
+	box-shadow:
+		-7em -9em 0 gold,
+
+		-7em -8em 0 gold,
+		-3em -8em 0 black,
+		-2em -8em 0 black,
+		-1em -8em 0 black,
+
+		-7em -7em 0 gold,
+		-4em -7em 0 black,
+		-3em -7em 0 black,
+		-2em -7em 0 black,
+		-1em -7em 0 black,
+		0 -7em 0 black,
+
+		-7em -6em 0 gold,
+		-4em -6em 0 black,
+		-3em -6em 0 black,
+		-2em -6em 0 black,
+		-1em -6em 0 black,
+		0 -6em 0 black,
+
+		-7em -5em 0 gold,
+		-4em -5em 0 gold,
+		-3em -5em 0 black,
+		-2em -5em 0 gold,
+		-1em -5em 0 gold,
+		0 -5em 0 black,
+
+		-7em -4em 0 gold,
+		-4em -4em 0 black,
+		-3em -4em 0 rgb(120,120,120),
+		-2em -4em 0 black,
+		-1em -4em 0 black,
+		0 -4em 0 rgb(54,54,54),
+
+		-7em -3em 0 rgb(120,120,120),
+		-4em -3em 0 black,
+		-3em -3em 0 rgb(54,54,54),
+		-2em -3em 0 black,
+		-1em -3em 0 black,
+		0 -3em 0 black,
+
+		-7em -2em 0 black,
+		-5em -2em 0 black,
+		-4em -2em 0 rgb(54,54,54),
+		-3em -2em 0 black,
+		-2em -2em 0 rgb(54,54,54),
+		-1em -2em 0 black,
+		0 -2em 0 black,
+		1em -2em 0 rgb(54,54,54),
+
+		-7em -1em 0 rgb(120,120,120),
+		-5em -1em 0 rgb(54,54,54),
+		-4em -1em 0 black,
+		-3em -1em 0 black,
+		-2em -1em 0 black,
+		-1em -1em 0 rgb(54,54,54),
+		0 -1em 0 black,
+		1em -1em 0 black,
+
+		-7em 0 0 black,
+		-3em 0 0 rgb(120,120,120),
+		-2em 0 0 rgb(120,120,120),
+		-1em 0 0 rgb(120,120,120),
+
+		-7em 1em 0 black,
+		-6em 1em 0 black,
+		-5em 1em 0 black,
+		-4em 1em 0 rgb(120,120,120),
+		-3em 1em 0 black,
+		-2em 1em 0 black,
+		-1em 1em 0 black,
+		0 1em 0 rgb(120,120,120),
+
+		-5em 2em 0 rgb(54,54,54),
+		-4em 2em 0 black,
+		-3em 2em 0 black,
+		-2em 2em 0 black,
+		-1em 2em 0 black,
+		0 2em 0 black,
+		1em 2em 0 black,
+
+		-5em 3em 0 rgb(54,54,54),
+		-4em 3em 0 black,
+		-3em 3em 0 rgb(120,120,120),
+		-2em 3em 0 gold,
+		-1em 3em 0 black,
+		0 3em 0 rgb(54,54,54),
+		1em 3em 0 black,
+
+		-5em 4em 0 rgb(54,54,54),
+		-4em 4em 0 black,
+		-3em 4em 0 black,
+		-2em 4em 0 black,
+		-1em 4em 0 black,
+		0 4em 0 rgb(54,54,54),
+		1em 4em 0 black,
+
+		-4em 5em 0 black,
+		-3em 5em 0 rgb(120,120,120),
+		-2em 5em 0 rgb(120,120,120),
+		-1em 5em 0 black,
+		0 5em 0 rgb(54,54,54),
+		1em 5em 0 black,
+
+		-4em 6em 0 black,
+		-3em 6em 0 black,
+		-2em 6em 0 black,
+		-1em 6em 0 black,
+		0 6em 0 rgb(54,54,54),
+		1em 6em 0 black,
+		2em 6em 0 rgb(54,54,54),
+
+		-4em 7em 0 black,
+		-3em 7em 0 rgb(54,54,54),
+		-2em 7em 0 rgb(54,54,54),
+		-1em 7em 0 black,
+		0 7em 0 rgb(54,54,54),
+		1em 7em 0 rgb(54,54,54),
+		2em 7em 0 rgb(54,54,54),
+
+		-4em 8em 0 black,
+		-2em 8em 0 rgb(54,54,54),
+		-1em 8em 0 black,
+		0 8em 0 rgb(54,54,54),
+		1em 8em 0 rgb(54,54,54),
+		2em 8em 0 rgb(54,54,54),
+		3em 8em 0 rgb(54,54,54),
+
+		-5em 9em 0 black,
+		-4em 9em 0 black,
+		-2em 9em 0 black,
+		-1em 9em 0 black;
 }
 
-.enemy.yellow:after {
-	content: "";
-	background-color: gold;
-	height: 17px;
-	width: 3px;
-	top: 1px;
-	left: 1px;
-	position: absolute;
+.enemy.green .vader {
+	box-shadow:
+		-7em -9em 0 limegreen,
+
+		-7em -8em 0 limegreen,
+		-3em -8em 0 black,
+		-2em -8em 0 black,
+		-1em -8em 0 black,
+
+		-7em -7em 0 limegreen,
+		-4em -7em 0 black,
+		-3em -7em 0 black,
+		-2em -7em 0 black,
+		-1em -7em 0 black,
+		0 -7em 0 black,
+
+		-7em -6em 0 limegreen,
+		-4em -6em 0 black,
+		-3em -6em 0 black,
+		-2em -6em 0 black,
+		-1em -6em 0 black,
+		0 -6em 0 black,
+
+		-7em -5em 0 limegreen,
+		-4em -5em 0 limegreen,
+		-3em -5em 0 black,
+		-2em -5em 0 limegreen,
+		-1em -5em 0 limegreen,
+		0 -5em 0 black,
+
+		-7em -4em 0 limegreen,
+		-4em -4em 0 black,
+		-3em -4em 0 rgb(120,120,120),
+		-2em -4em 0 black,
+		-1em -4em 0 black,
+		0 -4em 0 rgb(54,54,54),
+
+		-7em -3em 0 rgb(120,120,120),
+		-4em -3em 0 black,
+		-3em -3em 0 rgb(54,54,54),
+		-2em -3em 0 black,
+		-1em -3em 0 black,
+		0 -3em 0 black,
+
+		-7em -2em 0 black,
+		-5em -2em 0 black,
+		-4em -2em 0 rgb(54,54,54),
+		-3em -2em 0 black,
+		-2em -2em 0 rgb(54,54,54),
+		-1em -2em 0 black,
+		0 -2em 0 black,
+		1em -2em 0 rgb(54,54,54),
+
+		-7em -1em 0 rgb(120,120,120),
+		-5em -1em 0 rgb(54,54,54),
+		-4em -1em 0 black,
+		-3em -1em 0 black,
+		-2em -1em 0 black,
+		-1em -1em 0 rgb(54,54,54),
+		0 -1em 0 black,
+		1em -1em 0 black,
+
+		-7em 0 0 black,
+		-3em 0 0 rgb(120,120,120),
+		-2em 0 0 rgb(120,120,120),
+		-1em 0 0 rgb(120,120,120),
+
+		-7em 1em 0 black,
+		-6em 1em 0 black,
+		-5em 1em 0 black,
+		-4em 1em 0 rgb(120,120,120),
+		-3em 1em 0 black,
+		-2em 1em 0 black,
+		-1em 1em 0 black,
+		0 1em 0 rgb(120,120,120),
+
+		-5em 2em 0 rgb(54,54,54),
+		-4em 2em 0 black,
+		-3em 2em 0 black,
+		-2em 2em 0 black,
+		-1em 2em 0 black,
+		0 2em 0 black,
+		1em 2em 0 black,
+
+		-5em 3em 0 rgb(54,54,54),
+		-4em 3em 0 black,
+		-3em 3em 0 rgb(120,120,120),
+		-2em 3em 0 limegreen,
+		-1em 3em 0 black,
+		0 3em 0 rgb(54,54,54),
+		1em 3em 0 black,
+
+		-5em 4em 0 rgb(54,54,54),
+		-4em 4em 0 black,
+		-3em 4em 0 black,
+		-2em 4em 0 black,
+		-1em 4em 0 black,
+		0 4em 0 rgb(54,54,54),
+		1em 4em 0 black,
+
+		-4em 5em 0 black,
+		-3em 5em 0 rgb(120,120,120),
+		-2em 5em 0 rgb(120,120,120),
+		-1em 5em 0 black,
+		0 5em 0 rgb(54,54,54),
+		1em 5em 0 black,
+
+		-4em 6em 0 black,
+		-3em 6em 0 black,
+		-2em 6em 0 black,
+		-1em 6em 0 black,
+		0 6em 0 rgb(54,54,54),
+		1em 6em 0 black,
+		2em 6em 0 rgb(54,54,54),
+
+		-4em 7em 0 black,
+		-3em 7em 0 rgb(54,54,54),
+		-2em 7em 0 rgb(54,54,54),
+		-1em 7em 0 black,
+		0 7em 0 rgb(54,54,54),
+		1em 7em 0 rgb(54,54,54),
+		2em 7em 0 rgb(54,54,54),
+
+		-4em 8em 0 black,
+		-2em 8em 0 rgb(54,54,54),
+		-1em 8em 0 black,
+		0 8em 0 rgb(54,54,54),
+		1em 8em 0 rgb(54,54,54),
+		2em 8em 0 rgb(54,54,54),
+		3em 8em 0 rgb(54,54,54),
+
+		-5em 9em 0 black,
+		-4em 9em 0 black,
+		-2em 9em 0 black,
+		-1em 9em 0 black;
 }
 
 .remove {

@@ -2,12 +2,12 @@ var config = {
 	moveDistance: 2,
 	rotateDistance: 1,
 	containerHeight: 500,
-	characterHeight: 50,
-	characterWidth: 50,
-	enemyHeight: 50,
-	enemyWidth: 50,
-	bulletHeight: 6,
-	bulletWidth: 15,
+	characterHeight: 75,
+	characterWidth: 75,
+	enemyHeight: 75,
+	enemyWidth: 75,
+	bulletHeight: 4,
+	bulletWidth: 20,
 	colors: ['red', 'blue', 'green', 'yellow']
 };
 
@@ -50,7 +50,7 @@ document.addEventListener('keyup', function (e) {
 
 var gameLoop = window.setInterval(function(){
   	moveChar();
-  	if (Math.floor((Math.random() * 1000) + 1) < 10) {
+  	if (Math.floor((Math.random() * 10000) + 1) < 10) {
   		new Enemy(enemyId);
   		enemyId++;
   	}
@@ -60,7 +60,7 @@ var gameLoop = window.setInterval(function(){
 
 function moveChar() {
 	if (keys['68']) {
-		if (posLeft != ($('.container').width() - 50)) {
+		if (posLeft != ($('.container').width() - config.characterWidth)) {
 			moveRight();
 		}
 	}
@@ -72,7 +72,7 @@ function moveChar() {
 	}
 
 	if (keys['83']) {
-		if (posTop != (config.containerHeight - 50)) {
+		if (posTop != (config.containerHeight - config.characterHeight)) {
 			moveDown();
 		}
 	}
@@ -85,12 +85,12 @@ function moveChar() {
 }
 
 function moveRight() {
-	var pos = posTop + config.moveDistance;
-	if (pos > $('.container').width() - 50) {
-		pos = $('.container').width() - 50;
+	var pos = posLeft + config.moveDistance;
+	if (pos > ($('.container').width() - config.characterWidth)) {
+		pos = $('.container').width() - config.characterWidth;
 	}
-	$character.css('left', posLeft + config.moveDistance + 'px');
-	posLeft += config.moveDistance;
+	$character.css('left', pos + 'px');
+	posLeft = pos;
 }
 
 function moveLeft() {
@@ -99,16 +99,16 @@ function moveLeft() {
 		pos = 0;
 	}
 	$character.css('left', pos + 'px');
-	posLeft -= config.moveDistance;
+	posLeft = pos;
 }
 
 function moveDown() {
 	var pos = posTop + config.moveDistance;
-	if (pos > config.containerHeight - 50) {
-		pos = config.containerHeight - 50;
+	if (pos > (config.containerHeight - config.characterHeight)) {
+		pos = config.containerHeight - config.characterHeight;
 	}
 	$character.css('top', pos + 'px');
-	posTop += config.moveDistance;
+	posTop = pos;
 }
 
 function moveUp() {
@@ -117,7 +117,7 @@ function moveUp() {
 		pos = 0;
 	}
 	$character.css('top', pos + 'px');
-	posTop -= config.moveDistance;
+	posTop = pos;
 }
 
 function checkCollision() {

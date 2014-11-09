@@ -23,7 +23,7 @@ function Bullet(color, id) {
 				clearInterval(interval);
 				delete bulletPos[that.id];
 			} else {
-				startLeft += 10;
+				startLeft += 20;
 				that.bullet.css('left', startLeft + 'px');
 		  		bulletPos[that.id] = [startLeft, startTop];
 			}

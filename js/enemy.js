@@ -1,10 +1,10 @@
 function Enemy(id) {
 	this.id = id;
 	this.startLeft = $('.container').width();
-	this.startTop = (Math.random() * (config.containerHeight - 50));
+	this.startTop = (Math.random() * (config.containerHeight - config.characterHeight));
 	this.speed = Math.floor((Math.random() * 10) + 1);
 	this.colored = Math.floor((Math.random() * 4) + 0);
-	this.enemy = $('<div class="enemy ' + config.colors[this.colored] + '" id="enemy' + id + '" data-color="' + config.colors[this.colored] + '"></div>');
+	this.enemy = $('<div class="enemy ' + config.colors[this.colored] + '" id="enemy' + id + '" data-color="' + config.colors[this.colored] + '"><div class="vader"></div></div>');
 	this.attack = function() {
 		var that = this;
 
