@@ -7,7 +7,8 @@ var config = {
 	enemyHeight: 75,
 	enemyWidth: 45,
 	bulletHeight: 4,
-	bulletWidth: 20
+	bulletWidth: 20,
+	enemies: ['vader', 'storm-trooper', 'fet']
 };
 
 var keys = {};
@@ -181,13 +182,13 @@ function collisionCharacter(character, enemy) {
 
 	var x1 = character[0];
 	var y1 = character[1];
-	var b1 = y1 + config.characterWidth;
-	var r1 = x1 + config.characterHeight;
+	var b1 = y1 + config.characterHeight;
+	var r1 = x1 + config.characterWidth;
 
 	var x2 = enemy[0];
 	var y2 = enemy[1];
-	var b2 = y2 + config.enemyWidth;
-	var r2 = x2 + config.enemyHeight;
+	var b2 = y2 + config.enemyHeight;
+	var r2 = x2 + config.enemyWidth;
 
 	if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
 	return true;

@@ -2,13 +2,14 @@ function Enemy(id) {
 	this.id = id;
 	this.startTop = (Math.random() * (config.containerHeight - config.characterHeight));
 	this.speed = Math.floor((Math.random() * 10) + 1);
-
-	this.attack();
+	this.enemyType = Math.floor((Math.random() * 3) + 0);
 }
 
 function EnemyLeft(id) {
+	Enemy.call(this, id);
+
 	this.startLeft = $('.container').width();
-	this.enemy = $('<div class="enemy" id="enemy' + id + '"><div class="vader"></div></div>');
+	this.enemy = $('<div class="enemy" id="enemy' + id + '"><div class="' + config.enemies[this.enemyType] + '"></div></div>');
 	this.attack = function() {
 		var that = this;
 
@@ -35,12 +36,14 @@ function EnemyLeft(id) {
 		}, this.speed);
 	}
 
-	Enemy.call(this, id);
+	this.attack();
 }
 
 function EnemyRight(id) {
+	Enemy.call(this, id);
+
 	this.startLeft = 0 - config.characterWidth;
-	this.enemy = $('<div class="enemy right" id="enemy' + id + '"><div class="vader"></div></div>');
+	this.enemy = $('<div class="enemy right" id="enemy' + id + '"><div class="' + config.enemies[this.enemyType] + '"></div></div>');
 	this.attack = function() {
 		var that = this;
 		var end = $('.container').width();
@@ -68,5 +71,5 @@ function EnemyRight(id) {
 		}, this.speed);
 	}
 
-	Enemy.call(this, id);
+	this.attack();
 }

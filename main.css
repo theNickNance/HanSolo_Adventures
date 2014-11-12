@@ -369,6 +369,298 @@ body.red {
 	left: 20px;
 }
 
+.storm-trooper {
+	height: 1em;
+	width: 1em;
+	position: absolute;
+	top: 30px;
+	left: 33px;
+	font-size: 4px;
+
+	/* Body */
+	box-shadow:
+		-4em -6em 0 rgb(230,230,230),
+		-3em -6em 0 rgb(230,230,230),
+		-2em -6em 0 rgb(230,230,230),
+		-1em -6em 0 rgb(230,230,230),
+
+		-4em -5em 0 black,
+		-3em -5em 0 black,
+		-2em -5em 0 black,
+		-1em -5em 0 black,
+
+		-4em -4em 0 black,
+		-3em -4em 0 rgb(230,230,230),
+		-2em -4em 0 black,
+		-1em -4em 0 rgb(230,230,230),
+
+		-5em -3em 0 rgb(230,230,230),
+		-4em -3em 0 rgb(230,230,230),
+		-3em -3em 0 rgb(180,180,180),
+		-2em -3em 0 rgb(230,230,230),
+		-1em -3em 0 rgb(230,230,230),
+		0 -3em 0 rgb(230,230,230),
+
+		-5em -2em 0 rgb(230,230,230),
+		-4em -2em 0 rgb(180,180,180),
+		-3em -2em 0 rgb(230,230,230),
+		-2em -2em 0 rgb(180,180,180),
+		-1em -2em 0 rgb(230,230,230),
+		0 -2em 0 rgb(180,180,180),
+
+		-5em -1em 0 rgb(230,230,230),
+		-4em -1em 0 rgb(230,230,230),
+		-3em -1em 0 black,
+		-2em -1em 0 rgb(230,230,230),
+		-1em -1em 0 rgb(230,230,230),
+		0 -1em 0 rgb(230,230,230),
+
+		-9em 0 0 black,
+		-8em 0 0 black,
+		-4em 0 0 rgb(54,54,54),
+		-3em 0 0 black,
+		-2em 0 0 rgb(54,54,54),
+		-1em 0 0 rgb(230,230,230),
+
+		-12em 1em 0 black,
+		-11em 1em 0 black,
+		-10em 1em 0 black,
+		-9em 1em 0 black,
+		-8em 1em 0 black,
+		-7em 1em 0 black,
+		-5em 1em 0 rgb(230,230,230),
+		-4em 1em 0 rgb(230,230,230),
+		-3em 1em 0 rgb(230,230,230),
+		-2em 1em 0 rgb(230,230,230),
+		-1em 1em 0 rgb(230,230,230),
+		0 1em 0 rgb(230,230,230),
+
+		-10em 2em 0 black,
+		-9em 2em 0 rgb(230,230,230),
+		-8em 2em 0 black,
+		-7em 2em 0 rgb(230,230,230),
+		-6em 2em 0 rgb(230,230,230),
+		-5em 2em 0 rgb(230,230,230),
+		-4em 2em 0 rgb(230,230,230),
+		-3em 2em 0 rgb(230,230,230),
+		-2em 2em 0 rgb(230,230,230),
+		-1em 2em 0 rgb(230,230,230),
+		0 2em 0 rgb(230,230,230),
+		1em 2em 0 rgb(230,230,230),
+		2em 2em 0 rgb(230,230,230),
+
+		-8em 3em 0 black,
+		-4em 3em 0 rgb(230,230,230),
+		-3em 3em 0 rgb(230,230,230),
+		-2em 3em 0 rgb(230,230,230),
+		-1em 3em 0 rgb(230,230,230),
+		2em 3em 0 rgb(230,230,230),
+
+		-5em 4em 0 rgb(230,230,230),
+		-4em 4em 0 rgb(180,180,180),
+		-3em 4em 0 rgb(230,230,230),
+		-2em 4em 0 rgb(180,180,180),
+		-1em 4em 0 rgb(230,230,230),
+		0 4em 0 rgb(180,180,180),
+		2em 4em 0 rgb(230,230,230),
+
+		-5em 5em 0 rgb(230,230,230),
+		-4em 5em 0 rgb(180,180,180),
+		-3em 5em 0 rgb(230,230,230),
+		-2em 5em 0 rgb(180,180,180),
+		-1em 5em 0 rgb(230,230,230),
+		0 5em 0 rgb(180,180,180),
+		2em 5em 0 black,
+
+		-4em 6em 0 black,
+		-3em 6em 0 rgb(230,230,230),
+		-2em 6em 0 rgb(230,230,230),
+		-1em 6em 0 black,
+		2em 6em 0 rgb(230,230,230),
+
+		-4em 7em 0 rgb(230,230,230),
+		-1em 7em 0 rgb(230,230,230),
+
+		-4em 8em 0 rgb(230,230,230),
+		-1em 8em 0 rgb(230,230,230),
+
+		-5em 9em 0 rgb(230,230,230),
+		-4em 9em 0 rgb(230,230,230),
+		-2em 9em 0 rgb(230,230,230),
+		-1em 9em 0 rgb(230,230,230),
+
+		-5em 10em 0 rgb(180,180,180),
+		-4em 10em 0 rgb(180,180,180),
+		-2em 10em 0 rgb(180,180,180),
+		-1em 10em 0 rgb(180,180,180);
+}
+
+.fet {
+	height: 1em;
+	width: 1em;
+	position: absolute;
+	top: 23px;
+	left: 35px;
+	font-size: 4px;
+
+	box-shadow:
+		-6em -7em 0 black,
+		-5em -7em 0 black,
+
+		-6em -6em 0 rgb(180,180,180),
+
+		-6em -5em 0 rgb(180,180,180),
+
+		-6em -4em 0 rgb(180,180,180),
+		-5em -4em 0 rgb(95,110,75),
+		-4em -4em 0 rgb(95,110,75),
+		-3em -4em 0 rgb(95,110,75),
+		-2em -4em 0 rgb(95,110,75),
+		1em -4em 0 rgb(54,54,54),
+
+		-6em -3em 0 rgb(95,110,75),
+		-5em -3em 0 rgb(95,110,75),
+		-4em -3em 0 rgb(95,110,75),
+		-3em -3em 0 rgb(95,110,75),
+		-2em -3em 0 rgb(95,110,75),
+		-1em -3em 0 rgb(95,110,75),
+		1em -3em 0 rgb(54,54,54),
+		2em -3em 0 rgb(54,54,54),
+
+		-6em -2em 0 black,
+		-5em -2em 0 black,
+		-4em -2em 0 black,
+		-3em -2em 0 black,
+		-2em -2em 0 rgb(140,0,15),
+		-1em -2em 0 rgb(95,110,75),
+		1em -2em 0 rgb(54,54,54),
+
+		-6em -1em 0 rgb(140,0,15),
+		-5em -1em 0 black,
+		-4em -1em 0 rgb(140,0,15),
+		-3em -1em 0 rgb(140,0,15),
+		-2em -1em 0 black,
+		-1em -1em 0 rgb(95,110,75),
+		1em -1em 0 rgb(54,54,54),
+
+		-14em 0 0 black,
+		-13em 0 0 black,
+		-12em 0 0 black,
+		-6em 0 0 rgb(140,0,15),
+		-5em 0 0 black,
+		-4em 0 0 rgb(140,0,15),
+		-3em 0 0 rgb(180,180,180),
+		-2em 0 0 black,
+		-1em 0 0 rgb(95,110,75),
+		1em 0 0 rgb(95,110,75),
+
+		-13em 1em 0 black,
+		-6em 1em 0 rgb(140,0,15),
+		-5em 1em 0 black,
+		-4em 1em 0 rgb(140,0,15),
+		-3em 1em 0 rgb(180,180,180),
+		-2em 1em 0 rgb(180,180,180),
+		-1em 1em 0 rgb(95,110,75),
+		0 1em 0 rgb(95,110,75),
+		1em 1em 0 rgb(95,110,75),
+
+		-17em 2em 0 black,
+		-16em 2em 0 black,
+		-15em 2em 0 black,
+		-14em 2em 0 black,
+		-13em 2em 0 black,
+		-12em 2em 0 black,
+		-5em 2em 0 rgb(100,60,30),
+		-4em 2em 0 rgb(100,60,30),
+		-3em 2em 0 rgb(100,60,30),
+		-2em 2em 0 rgb(100,60,30),
+		-1em 2em 0 rgb(100,60,30),
+		0 2em 0 rgb(95,110,75),
+		1em 2em 0 rgb(95,110,75),
+
+		-15em 3em 0 black,
+		-14em 3em 0 black,
+		-13em 3em 0 black,
+		-12em 3em 0 black,
+		-11em 3em 0 black,
+		-6em 3em 0 rgb(240,130,25),
+		-5em 3em 0 rgb(180,180,180),
+		-4em 3em 0 rgb(180,180,180),
+		-3em 3em 0 rgb(180,180,180),
+		-2em 3em 0 rgb(180,180,180),
+		-1em 3em 0 rgb(240,130,25),
+		0 3em 0 rgb(100,60,30),
+		1em 3em 0 rgb(95,110,75),
+
+		-11em 4em 0 rgb(180,180,180),
+		-10em 4em 0 rgb(95,110,75),
+		-9em 4em 0 rgb(95,110,75),
+		-8em 4em 0 rgb(180,180,180),
+		-7em 4em 0 rgb(240,130,25),
+		-6em 4em 0 rgb(240,130,25),
+		-5em 4em 0 rgb(95,110,75),
+		-4em 4em 0 rgb(95,110,75),
+		-3em 4em 0 rgb(95,110,75),
+		-2em 4em 0 rgb(95,110,75),
+		-1em 4em 0 rgb(240,130,25),
+		0 4em 0 rgb(240,130,25),
+		1em 4em 0 rgb(95,110,75),
+
+		-11em 5em 0 black,
+		-5em 5em 0 rgb(95,110,75),
+		-4em 5em 0 rgb(95,110,75),
+		-3em 5em 0 rgb(95,110,75),
+		-2em 5em 0 rgb(95,110,75),
+		-1em 5em 0 rgb(100,60,30),
+		0 5em 0 rgb(180,180,180),
+		1em 5em 0 rgb(95,110,75),
+
+		-5em 6em 0 rgb(180,180,180),
+		-4em 6em 0 rgb(95,110,75),
+		-3em 6em 0 rgb(95,110,75),
+		-2em 6em 0 rgb(180,180,180),
+		-1em 6em 0 rgb(100,60,30),
+		0 6em 0 rgb(95,110,75),
+
+		-5em 7em 0 rgb(100,60,30),
+		-4em 7em 0 rgb(100,60,30),
+		-3em 7em 0 rgb(100,60,30),
+		-2em 7em 0 rgb(100,60,30),
+		-1em 7em 0 rgb(100,60,30),
+		0 7em 0 rgb(180,180,180),
+
+		-5em 8em 0 rgb(180,180,180),
+		-4em 8em 0 rgb(95,110,75),
+		-3em 8em 0 rgb(95,110,75),
+		-2em 8em 0 rgb(180,180,180),
+		-1em 8em 0 rgb(100,60,30),
+		0 8em 0 rgb(100,60,30),
+
+		-5em 9em 0 rgb(180,180,180),
+		-2em 9em 0 rgb(180,180,180),
+		-1em 9em 0 rgb(100,60,30),
+		0 9em 0 rgb(100,60,30),
+
+		-5em 10em 0 rgb(240,130,25),
+		-2em 10em 0 rgb(240,130,25),
+		-1em 10em 0 rgb(100,60,30),
+		0 10em 0 rgb(100,60,30),
+
+		-5em 11em 0 rgb(180,180,180),
+		-2em 11em 0 rgb(180,180,180),
+		0 11em 0 rgb(100,60,30),
+
+		-6em 12em 0 rgb(54,54,54),
+		-5em 12em 0 rgb(54,54,54),
+		-3em 12em 0 rgb(54,54,54),
+		-2em 12em 0 rgb(54,54,54);
+}
+
+.enemy.right .fet, .enemy.right .storm-trooper {
+	transform: rotateY(180deg);
+	left: 7px;
+}
+
 .remove {
 	display: none;
 }
