@@ -65,10 +65,15 @@ body.red {
 
 .character {
 	height: 75px;
-	width: 75px;
+	width: 65px;
 	position: absolute;
-	top: 50px;
-	left: 50px;
+	top: 200px;
+	left: 300px;
+	transition: opacity 0.1s;
+}
+
+.character.dim {
+	opacity: 0.3;
 }
 
 .han-solo {
@@ -192,35 +197,24 @@ body.red {
 		1em 9em 0 black;
 }
 
+.character.rotate .han-solo {
+	transform: rotateY(180deg);
+	right: 20px;
+}
+
 .bullet {
 	height: 4px;
 	width: 20px;
-	background-color: black;
+	background-color: red;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 2px;
 }
 
-.bullet.red {
-	background-color: red;
-}
-
-.bullet.blue {
-	background-color: blue;
-}
-
-.bullet.green {
-	background-color: limegreen;
-}
-
-.bullet.yellow {
-	background-color: gold;
-}
-
 .enemy {
 	height: 75px;
-	width: 75px;
+	width: 45px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -370,415 +364,9 @@ body.red {
 		-1em 9em 0 black;
 }
 
-.enemy.blue .vader {
-	box-shadow:
-		-7em -9em 0 blue,
-
-		-7em -8em 0 blue,
-		-3em -8em 0 black,
-		-2em -8em 0 black,
-		-1em -8em 0 black,
-
-		-7em -7em 0 blue,
-		-4em -7em 0 black,
-		-3em -7em 0 black,
-		-2em -7em 0 black,
-		-1em -7em 0 black,
-		0 -7em 0 black,
-
-		-7em -6em 0 blue,
-		-4em -6em 0 black,
-		-3em -6em 0 black,
-		-2em -6em 0 black,
-		-1em -6em 0 black,
-		0 -6em 0 black,
-
-		-7em -5em 0 blue,
-		-4em -5em 0 blue,
-		-3em -5em 0 black,
-		-2em -5em 0 blue,
-		-1em -5em 0 blue,
-		0 -5em 0 black,
-
-		-7em -4em 0 blue,
-		-4em -4em 0 black,
-		-3em -4em 0 rgb(120,120,120),
-		-2em -4em 0 black,
-		-1em -4em 0 black,
-		0 -4em 0 rgb(54,54,54),
-
-		-7em -3em 0 rgb(120,120,120),
-		-4em -3em 0 black,
-		-3em -3em 0 rgb(54,54,54),
-		-2em -3em 0 black,
-		-1em -3em 0 black,
-		0 -3em 0 black,
-
-		-7em -2em 0 black,
-		-5em -2em 0 black,
-		-4em -2em 0 rgb(54,54,54),
-		-3em -2em 0 black,
-		-2em -2em 0 rgb(54,54,54),
-		-1em -2em 0 black,
-		0 -2em 0 black,
-		1em -2em 0 rgb(54,54,54),
-
-		-7em -1em 0 rgb(120,120,120),
-		-5em -1em 0 rgb(54,54,54),
-		-4em -1em 0 black,
-		-3em -1em 0 black,
-		-2em -1em 0 black,
-		-1em -1em 0 rgb(54,54,54),
-		0 -1em 0 black,
-		1em -1em 0 black,
-
-		-7em 0 0 black,
-		-3em 0 0 rgb(120,120,120),
-		-2em 0 0 rgb(120,120,120),
-		-1em 0 0 rgb(120,120,120),
-
-		-7em 1em 0 black,
-		-6em 1em 0 black,
-		-5em 1em 0 black,
-		-4em 1em 0 rgb(120,120,120),
-		-3em 1em 0 black,
-		-2em 1em 0 black,
-		-1em 1em 0 black,
-		0 1em 0 rgb(120,120,120),
-
-		-5em 2em 0 rgb(54,54,54),
-		-4em 2em 0 black,
-		-3em 2em 0 black,
-		-2em 2em 0 black,
-		-1em 2em 0 black,
-		0 2em 0 black,
-		1em 2em 0 black,
-
-		-5em 3em 0 rgb(54,54,54),
-		-4em 3em 0 black,
-		-3em 3em 0 rgb(120,120,120),
-		-2em 3em 0 blue,
-		-1em 3em 0 black,
-		0 3em 0 rgb(54,54,54),
-		1em 3em 0 black,
-
-		-5em 4em 0 rgb(54,54,54),
-		-4em 4em 0 black,
-		-3em 4em 0 black,
-		-2em 4em 0 black,
-		-1em 4em 0 black,
-		0 4em 0 rgb(54,54,54),
-		1em 4em 0 black,
-
-		-4em 5em 0 black,
-		-3em 5em 0 rgb(120,120,120),
-		-2em 5em 0 rgb(120,120,120),
-		-1em 5em 0 black,
-		0 5em 0 rgb(54,54,54),
-		1em 5em 0 black,
-
-		-4em 6em 0 black,
-		-3em 6em 0 black,
-		-2em 6em 0 black,
-		-1em 6em 0 black,
-		0 6em 0 rgb(54,54,54),
-		1em 6em 0 black,
-		2em 6em 0 rgb(54,54,54),
-
-		-4em 7em 0 black,
-		-3em 7em 0 rgb(54,54,54),
-		-2em 7em 0 rgb(54,54,54),
-		-1em 7em 0 black,
-		0 7em 0 rgb(54,54,54),
-		1em 7em 0 rgb(54,54,54),
-		2em 7em 0 rgb(54,54,54),
-
-		-4em 8em 0 black,
-		-2em 8em 0 rgb(54,54,54),
-		-1em 8em 0 black,
-		0 8em 0 rgb(54,54,54),
-		1em 8em 0 rgb(54,54,54),
-		2em 8em 0 rgb(54,54,54),
-		3em 8em 0 rgb(54,54,54),
-
-		-5em 9em 0 black,
-		-4em 9em 0 black,
-		-2em 9em 0 black,
-		-1em 9em 0 black;
-}
-
-.enemy.yellow .vader {
-	box-shadow:
-		-7em -9em 0 gold,
-
-		-7em -8em 0 gold,
-		-3em -8em 0 black,
-		-2em -8em 0 black,
-		-1em -8em 0 black,
-
-		-7em -7em 0 gold,
-		-4em -7em 0 black,
-		-3em -7em 0 black,
-		-2em -7em 0 black,
-		-1em -7em 0 black,
-		0 -7em 0 black,
-
-		-7em -6em 0 gold,
-		-4em -6em 0 black,
-		-3em -6em 0 black,
-		-2em -6em 0 black,
-		-1em -6em 0 black,
-		0 -6em 0 black,
-
-		-7em -5em 0 gold,
-		-4em -5em 0 gold,
-		-3em -5em 0 black,
-		-2em -5em 0 gold,
-		-1em -5em 0 gold,
-		0 -5em 0 black,
-
-		-7em -4em 0 gold,
-		-4em -4em 0 black,
-		-3em -4em 0 rgb(120,120,120),
-		-2em -4em 0 black,
-		-1em -4em 0 black,
-		0 -4em 0 rgb(54,54,54),
-
-		-7em -3em 0 rgb(120,120,120),
-		-4em -3em 0 black,
-		-3em -3em 0 rgb(54,54,54),
-		-2em -3em 0 black,
-		-1em -3em 0 black,
-		0 -3em 0 black,
-
-		-7em -2em 0 black,
-		-5em -2em 0 black,
-		-4em -2em 0 rgb(54,54,54),
-		-3em -2em 0 black,
-		-2em -2em 0 rgb(54,54,54),
-		-1em -2em 0 black,
-		0 -2em 0 black,
-		1em -2em 0 rgb(54,54,54),
-
-		-7em -1em 0 rgb(120,120,120),
-		-5em -1em 0 rgb(54,54,54),
-		-4em -1em 0 black,
-		-3em -1em 0 black,
-		-2em -1em 0 black,
-		-1em -1em 0 rgb(54,54,54),
-		0 -1em 0 black,
-		1em -1em 0 black,
-
-		-7em 0 0 black,
-		-3em 0 0 rgb(120,120,120),
-		-2em 0 0 rgb(120,120,120),
-		-1em 0 0 rgb(120,120,120),
-
-		-7em 1em 0 black,
-		-6em 1em 0 black,
-		-5em 1em 0 black,
-		-4em 1em 0 rgb(120,120,120),
-		-3em 1em 0 black,
-		-2em 1em 0 black,
-		-1em 1em 0 black,
-		0 1em 0 rgb(120,120,120),
-
-		-5em 2em 0 rgb(54,54,54),
-		-4em 2em 0 black,
-		-3em 2em 0 black,
-		-2em 2em 0 black,
-		-1em 2em 0 black,
-		0 2em 0 black,
-		1em 2em 0 black,
-
-		-5em 3em 0 rgb(54,54,54),
-		-4em 3em 0 black,
-		-3em 3em 0 rgb(120,120,120),
-		-2em 3em 0 gold,
-		-1em 3em 0 black,
-		0 3em 0 rgb(54,54,54),
-		1em 3em 0 black,
-
-		-5em 4em 0 rgb(54,54,54),
-		-4em 4em 0 black,
-		-3em 4em 0 black,
-		-2em 4em 0 black,
-		-1em 4em 0 black,
-		0 4em 0 rgb(54,54,54),
-		1em 4em 0 black,
-
-		-4em 5em 0 black,
-		-3em 5em 0 rgb(120,120,120),
-		-2em 5em 0 rgb(120,120,120),
-		-1em 5em 0 black,
-		0 5em 0 rgb(54,54,54),
-		1em 5em 0 black,
-
-		-4em 6em 0 black,
-		-3em 6em 0 black,
-		-2em 6em 0 black,
-		-1em 6em 0 black,
-		0 6em 0 rgb(54,54,54),
-		1em 6em 0 black,
-		2em 6em 0 rgb(54,54,54),
-
-		-4em 7em 0 black,
-		-3em 7em 0 rgb(54,54,54),
-		-2em 7em 0 rgb(54,54,54),
-		-1em 7em 0 black,
-		0 7em 0 rgb(54,54,54),
-		1em 7em 0 rgb(54,54,54),
-		2em 7em 0 rgb(54,54,54),
-
-		-4em 8em 0 black,
-		-2em 8em 0 rgb(54,54,54),
-		-1em 8em 0 black,
-		0 8em 0 rgb(54,54,54),
-		1em 8em 0 rgb(54,54,54),
-		2em 8em 0 rgb(54,54,54),
-		3em 8em 0 rgb(54,54,54),
-
-		-5em 9em 0 black,
-		-4em 9em 0 black,
-		-2em 9em 0 black,
-		-1em 9em 0 black;
-}
-
-.enemy.green .vader {
-	box-shadow:
-		-7em -9em 0 limegreen,
-
-		-7em -8em 0 limegreen,
-		-3em -8em 0 black,
-		-2em -8em 0 black,
-		-1em -8em 0 black,
-
-		-7em -7em 0 limegreen,
-		-4em -7em 0 black,
-		-3em -7em 0 black,
-		-2em -7em 0 black,
-		-1em -7em 0 black,
-		0 -7em 0 black,
-
-		-7em -6em 0 limegreen,
-		-4em -6em 0 black,
-		-3em -6em 0 black,
-		-2em -6em 0 black,
-		-1em -6em 0 black,
-		0 -6em 0 black,
-
-		-7em -5em 0 limegreen,
-		-4em -5em 0 limegreen,
-		-3em -5em 0 black,
-		-2em -5em 0 limegreen,
-		-1em -5em 0 limegreen,
-		0 -5em 0 black,
-
-		-7em -4em 0 limegreen,
-		-4em -4em 0 black,
-		-3em -4em 0 rgb(120,120,120),
-		-2em -4em 0 black,
-		-1em -4em 0 black,
-		0 -4em 0 rgb(54,54,54),
-
-		-7em -3em 0 rgb(120,120,120),
-		-4em -3em 0 black,
-		-3em -3em 0 rgb(54,54,54),
-		-2em -3em 0 black,
-		-1em -3em 0 black,
-		0 -3em 0 black,
-
-		-7em -2em 0 black,
-		-5em -2em 0 black,
-		-4em -2em 0 rgb(54,54,54),
-		-3em -2em 0 black,
-		-2em -2em 0 rgb(54,54,54),
-		-1em -2em 0 black,
-		0 -2em 0 black,
-		1em -2em 0 rgb(54,54,54),
-
-		-7em -1em 0 rgb(120,120,120),
-		-5em -1em 0 rgb(54,54,54),
-		-4em -1em 0 black,
-		-3em -1em 0 black,
-		-2em -1em 0 black,
-		-1em -1em 0 rgb(54,54,54),
-		0 -1em 0 black,
-		1em -1em 0 black,
-
-		-7em 0 0 black,
-		-3em 0 0 rgb(120,120,120),
-		-2em 0 0 rgb(120,120,120),
-		-1em 0 0 rgb(120,120,120),
-
-		-7em 1em 0 black,
-		-6em 1em 0 black,
-		-5em 1em 0 black,
-		-4em 1em 0 rgb(120,120,120),
-		-3em 1em 0 black,
-		-2em 1em 0 black,
-		-1em 1em 0 black,
-		0 1em 0 rgb(120,120,120),
-
-		-5em 2em 0 rgb(54,54,54),
-		-4em 2em 0 black,
-		-3em 2em 0 black,
-		-2em 2em 0 black,
-		-1em 2em 0 black,
-		0 2em 0 black,
-		1em 2em 0 black,
-
-		-5em 3em 0 rgb(54,54,54),
-		-4em 3em 0 black,
-		-3em 3em 0 rgb(120,120,120),
-		-2em 3em 0 limegreen,
-		-1em 3em 0 black,
-		0 3em 0 rgb(54,54,54),
-		1em 3em 0 black,
-
-		-5em 4em 0 rgb(54,54,54),
-		-4em 4em 0 black,
-		-3em 4em 0 black,
-		-2em 4em 0 black,
-		-1em 4em 0 black,
-		0 4em 0 rgb(54,54,54),
-		1em 4em 0 black,
-
-		-4em 5em 0 black,
-		-3em 5em 0 rgb(120,120,120),
-		-2em 5em 0 rgb(120,120,120),
-		-1em 5em 0 black,
-		0 5em 0 rgb(54,54,54),
-		1em 5em 0 black,
-
-		-4em 6em 0 black,
-		-3em 6em 0 black,
-		-2em 6em 0 black,
-		-1em 6em 0 black,
-		0 6em 0 rgb(54,54,54),
-		1em 6em 0 black,
-		2em 6em 0 rgb(54,54,54),
-
-		-4em 7em 0 black,
-		-3em 7em 0 rgb(54,54,54),
-		-2em 7em 0 rgb(54,54,54),
-		-1em 7em 0 black,
-		0 7em 0 rgb(54,54,54),
-		1em 7em 0 rgb(54,54,54),
-		2em 7em 0 rgb(54,54,54),
-
-		-4em 8em 0 black,
-		-2em 8em 0 rgb(54,54,54),
-		-1em 8em 0 black,
-		0 8em 0 rgb(54,54,54),
-		1em 8em 0 rgb(54,54,54),
-		2em 8em 0 rgb(54,54,54),
-		3em 8em 0 rgb(54,54,54),
-
-		-5em 9em 0 black,
-		-4em 9em 0 black,
-		-2em 9em 0 black,
-		-1em 9em 0 black;
+.enemy.right .vader {
+	transform: rotateY(180deg);
+	left: 20px;
 }
 
 .remove {

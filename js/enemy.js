@@ -1,10 +1,14 @@
 function Enemy(id) {
 	this.id = id;
-	this.startLeft = $('.container').width();
 	this.startTop = (Math.random() * (config.containerHeight - config.characterHeight));
 	this.speed = Math.floor((Math.random() * 10) + 1);
-	this.colored = Math.floor((Math.random() * 4) + 0);
-	this.enemy = $('<div class="enemy ' + config.colors[this.colored] + '" id="enemy' + id + '" data-color="' + config.colors[this.colored] + '"><div class="vader"></div></div>');
+
+	this.attack();
+}
+
+function EnemyLeft(id) {
+	this.startLeft = $('.container').width();
+	this.enemy = $('<div class="enemy" id="enemy' + id + '"><div class="vader"></div></div>');
 	this.attack = function() {
 		var that = this;
 
@@ -21,19 +25,9 @@ function Enemy(id) {
 				delete enemyPos[that.id];
 			} else if (that.startLeft < 0) {
 				that.enemy.remove();
-				if (lives == 0) {
-					clearInterval(gameLoop);
-					$('.spawned').html(enemyId);
-					$('.fired').html(bulletId);
-					$('.gameOver').show();
-				} else {
-					lifeBlink();
-					lives -= 1;
-					$('.lives').html(lives);
-				}
 				clearInterval(interval);
 				delete enemyPos[that.id];
-			} else {
+			} else if (!stopped) {
 				that.startLeft -= 1;
 				that.enemy.css('left', that.startLeft + 'px');
 		  		enemyPos[that.id] = [that.startLeft, that.startTop];
@@ -41,5 +35,38 @@ function Enemy(id) {
 		}, this.speed);
 	}
 
-	this.attack();
+	Enemy.call(this, id);
+}
+
+function EnemyRight(id) {
+	this.startLeft = 0 - config.characterWidth;
+	this.enemy = $('<div class="enemy right" id="enemy' + id + '"><div class="vader"></div></div>');
+	this.attack = function() {
+		var that = this;
+		var end = $('.container').width();
+
+		this.enemy.css('left', this.startLeft + 'px');
+		this.enemy.css('top', this.startTop + 'px');
+		this.enemy.appendTo('.container');
+
+		enemyPos[this.id] = [this.startLeft, this.startTop];
+
+		var interval = window.setInterval(function(){
+			if (that.enemy.hasClass('remove')) {
+				that.enemy.remove();
+				clearInterval(interval);
+				delete enemyPos[that.id];
+			} else if (that.startLeft > end) {
+				that.enemy.remove();
+				clearInterval(interval);
+				delete enemyPos[that.id];
+			} else if (!stopped) {
+				that.startLeft += 1;
+				that.enemy.css('left', that.startLeft + 'px');
+		  		enemyPos[that.id] = [that.startLeft, that.startTop];
+			}
+		}, this.speed);
+	}
+
+	Enemy.call(this, id);
 }
