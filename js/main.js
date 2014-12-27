@@ -1,163 +1,77 @@
-var config = {
-	moveDistance: 2,
-	rotateDistance: 1,
-	containerHeight: 500,
-	characterHeight: 75,
-	characterWidth: 65,
-	enemyHeight: 75,
-	enemyWidth: 45,
-	bulletHeight: 4,
-	bulletWidth: 20,
-	enemies: ['vader', 'storm-trooper', 'fet']
-};
-
+//GLOBAL GAME VARIABLES
 var keys = {};
 
-var bulletPos = {};
-var enemyPos = {};
+var enemiesArray = [];
+var bulletsArray = [];
 
-var enemyId = 0;
-var bulletId = 0;
+var scoreBoard = {
+	score: 0,
+	lives: 3
+};
 
-var posLeft = 300;
-var posTop = 200;
-var $character = $('.character');
+var gameStopped = false;
+var heroUnvulnerable = false;
 
-var score = 0;
-var lives = 3;
+var hero = new Hero();
 
-var isRotated = false;
-
-var stopped = false;
-
+//KEY EVENTS
 document.addEventListener('keydown', function (e) {
 	keys[e.which] = true;
 });
 
 document.addEventListener('keyup', function (e) {
 	if (e.which == 37) {
-		if (isRotated) {
-			new LeftBullet(bulletId);
+		if (hero.isRotated) {
+			bulletsArray.push(new LeftBullet(bulletsArray.length));
 		} else {
-			new RightBullet(bulletId);
+			bulletsArray.push(new RightBullet(bulletsArray.length));
 		}
-		bulletId++;
 	} else if (e.which == 38) {
-		rotateCharacter();
+		hero.rotateCharacter();
 	} else {
 		delete keys[e.which];
 	}
 });
 
+//MAIN GAME LOOP
 var gameLoop = window.setInterval(function(){
-	if (!stopped) {
-		moveChar();
+	if (!gameStopped) {
+		hero.moveChar();
 	}
   	var rand = Math.floor((Math.random() * 1000) + 1);
   	if (rand <= 10) {
   		if (rand <= 5) {
-  			new EnemyLeft(enemyId);
+  			enemiesArray.push(new EnemyLeft(enemiesArray.length));
   		} else {
-  			new EnemyRight(enemyId);
+  			enemiesArray.push(new EnemyRight(enemiesArray.length));
   		}
-  		enemyId++;
   	}
 
   	checkCollision();
 }, 0);
 
-function rotateCharacter() {
-	if (isRotated) {
-		$('.character').removeClass('rotate');
-		isRotated = false;
-	} else {
-		$('.character').addClass('rotate');
-		isRotated = true;
-	}
-}
-
-function moveChar() {
-	if (keys['68']) {
-		if (posLeft != ($('.container').width() - config.characterWidth)) {
-			moveRight();
-		}
-	}
-
-	if (keys['65']) {
-		if (posLeft != 0) {
-			moveLeft();
-		}
-	}
-
-	if (keys['83']) {
-		if (posTop != (config.containerHeight - config.characterHeight)) {
-			moveDown();
-		}
-	}
-
-	if (keys['87']) {
-		if (posTop != 0) {
-			moveUp();
-		}
-	}
-}
-
-function moveRight() {
-	var pos = posLeft + config.moveDistance;
-	if (pos > ($('.container').width() - config.characterWidth)) {
-		pos = $('.container').width() - config.characterWidth;
-	}
-	$character.css('left', pos + 'px');
-	posLeft = pos;
-}
-
-function moveLeft() {
-	var pos = posLeft - config.moveDistance;
-	if (pos < 0) {
-		pos = 0;
-	}
-	$character.css('left', pos + 'px');
-	posLeft = pos;
-}
-
-function moveDown() {
-	var pos = posTop + config.moveDistance;
-	if (pos > (config.containerHeight - config.characterHeight)) {
-		pos = config.containerHeight - config.characterHeight;
-	}
-	$character.css('top', pos + 'px');
-	posTop = pos;
-}
-
-function moveUp() {
-	var pos = posTop - config.moveDistance;
-	if (pos < 0) {
-		pos = 0;
-	}
-	$character.css('top', pos + 'px');
-	posTop = pos;
-}
-
+//COLLISION DETECTION
 function checkCollision() {
-	for (var enemy in enemyPos) {
-		for (var bullet in bulletPos) {
-			if (collision(bulletPos[bullet], enemyPos[enemy])) {
-				var $bullet = $('#bullet' + bullet);
-				var $enemy = $('#enemy' + enemy);
-				$enemy.addClass('remove');
-				$bullet.addClass('remove');
-				score++;
-				$('.score').html(score);
-				return;
+	for (var i = 0; i < enemiesArray.length; i++) {
+		if (enemiesArray[i] != null) {
+			for (var j = 0; j < bulletsArray.length; j++) {
+				if (bulletsArray[j] != null) {
+					if (collision([bulletsArray[j].leftPos, bulletsArray[j].topPos], [enemiesArray[i].leftPos, enemiesArray[i].topPos])) {
+						bulletsArray[j].removeMe();
+						enemiesArray[i].removeMe();
+						scoreBoard.score++;
+						$('.score').html(scoreBoard.score);
+						return;
+					}
+				}
 			}
-		}
 
-		if (collisionCharacter([posLeft, posTop], enemyPos[enemy])) {
-			var $enemy = $('#enemy' + enemy);
-
-			$enemy.addClass('remove');
-
-			lifeBlink();
+			if (!heroUnvulnerable) {
+				if (collisionCharacter([hero.posLeft, hero.posTop], [enemiesArray[i].leftPos, enemiesArray[i].topPos])) {
+					enemiesArray[i].removeMe();
+					lifeBlink();
+				}
+			}
 		}
 	}
 }
@@ -196,20 +110,21 @@ function collisionCharacter(character, enemy) {
 
 function lifeBlink() {
 
-	if (lives == 0) {
+	if (scoreBoard.lives == 0) {
 		clearInterval(gameLoop);
-		$('.spawned').html(enemyId);
-		$('.fired').html(bulletId);
+		$('.spawned').html(enemiesArray.length);
+		$('.fired').html(bulletsArray.length);
 		$('.gameOver').show();
 	} else {
-		var times = 15;
-		stopped = true;
-		lives -= 1;
-		$('.lives').html(lives);
+		var times = 20;
+		gameStopped = true;
+		heroUnvulnerable = true;
+		scoreBoard.lives -= 1;
+		$('.lives').html(scoreBoard.lives);
 		$('body').addClass('red');
 
 		window.setTimeout(function(){
-			stopped = false;
+			gameStopped = false;
 		}, 1000);
 
 		window.setTimeout(function(){
@@ -219,13 +134,14 @@ function lifeBlink() {
 		var charBlink = window.setInterval(function(){
 			if (times) {
 				times--;
-				if ($character.hasClass('dim')) {
-					$character.removeClass('dim');
+				if (hero.el.hasClass('dim')) {
+					hero.el.removeClass('dim');
 				} else {
-					$character.addClass('dim');
+					hero.el.addClass('dim');
 				}
 			} else {
-				$character.removeClass('dim');
+				hero.el.removeClass('dim');
+				heroUnvulnerable = false;
 				clearInterval(charBlink);
 			}
 		}, 100);

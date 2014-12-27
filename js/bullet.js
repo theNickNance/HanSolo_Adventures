@@ -1,72 +1,65 @@
-function Bullet(id) {
-	this.bullet = $('<div class="bullet" id="bullet' + id + '"></div>');
-	this.id = id;
+function Bullet(index) {
+	this.index = index;
+	this.bullet = $('<div class="bullet"></div>');
+	this.topPos = $('.character').offset().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
+	this.interval;
+	this.removeMe = function() {
+		this.bullet.remove();
+		clearInterval(this.interval);
+		bulletsArray[this.index] = null;
+	}
 
 	this.shoot();
 }
 
-function RightBullet(id) {
+function RightBullet(index) {
+	this.leftPos = $('.character').offset().left + config.characterWidth;
+
 	this.shoot = function() {
 		var that = this;
-		var startLeft = $('.character').offset().left + config.characterWidth;
-		var startTop = $('.character').offset().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
 		var end = $('.container').width();
 
-		this.bullet.css('left', startLeft + 'px');
-		this.bullet.css('top', startTop + 'px');
+		this.bullet.css('left', that.leftPos + 'px');
+		this.bullet.css('top', that.topPos + 'px');
 		this.bullet.appendTo('.container');
 
-		bulletPos[this.id] = [startLeft, startTop];
-
-		var interval = window.setInterval(function(){
-			if (that.bullet.hasClass('remove')) {
+		that.interval = window.setInterval(function(){
+			if (that.leftPos > end) {
 				that.bullet.remove();
-				clearInterval(interval);
-				delete bulletPos[that.id];
-			} else if (startLeft > end) {
-				that.bullet.remove();
-				clearInterval(interval);
-				delete bulletPos[that.id];
-			} else if (!stopped) {
-				startLeft += 20;
-				that.bullet.css('left', startLeft + 'px');
-		  		bulletPos[that.id] = [startLeft, startTop];
+				clearInterval(that.interval);
+				bulletsArray[that.index] = null;
+			} else if (!gameStopped) {
+				that.leftPos += 20;
+				that.bullet.css('left', that.leftPos + 'px');
 			}
 		}, 10);
 	}
 
-	Bullet.call(this, id);
+	Bullet.call(this, index);
 }
 
-function LeftBullet(id) {
+function LeftBullet(index) {
+	this.leftPos = $('.character').offset().left - config.characterWidth;
+
 	this.shoot = function() {
 		var that = this;
-		var startLeft = $('.character').offset().left - config.bulletWidth;
-		var startTop = $('.character').offset().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
 		var end = 0;
 
-		this.bullet.css('left', startLeft + 'px');
-		this.bullet.css('top', startTop + 'px');
+		this.bullet.css('left', that.leftPos + 'px');
+		this.bullet.css('top', that.topPos + 'px');
 		this.bullet.appendTo('.container');
 
-		bulletPos[this.id] = [startLeft, startTop];
-
-		var interval = window.setInterval(function(){
-			if (that.bullet.hasClass('remove')) {
+		that.interval = window.setInterval(function(){
+			if (that.leftPos < end) {
 				that.bullet.remove();
-				clearInterval(interval);
-				delete bulletPos[that.id];
-			} else if (startLeft < end) {
-				that.bullet.remove();
-				clearInterval(interval);
-				delete bulletPos[that.id];
-			} else if (!stopped) {
-				startLeft -= 20;
-				that.bullet.css('left', startLeft + 'px');
-		  		bulletPos[that.id] = [startLeft, startTop];
+				clearInterval(that.interval);
+				bulletsArray[that.index] = null;
+			} else if (!gameStopped) {
+				that.leftPos -= 20;
+				that.bullet.css('left', that.leftPos + 'px');
 			}
 		}, 10);
 	}
 
-	Bullet.call(this, id);
+	Bullet.call(this, index);
 }

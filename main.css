@@ -49,7 +49,7 @@ body.red {
 .scoreboard {
 	padding: 20px;
 	color: rgba(0,0,0,0.5);
-	font-size: 18px;
+	font-size: 28px;
 }
 
 .score, .lives, .fired, .spawned {
