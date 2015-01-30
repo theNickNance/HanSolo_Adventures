@@ -1,7 +1,7 @@
 function Bullet(index) {
 	this.index = index;
 	this.bullet = $('<div class="bullet"></div>');
-	this.topPos = $('.character').offset().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
+	this.topPos = $('.character').position().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
 	this.interval;
 	this.removeMe = function() {
 		this.bullet.remove();
@@ -13,7 +13,7 @@ function Bullet(index) {
 }
 
 function RightBullet(index) {
-	this.leftPos = $('.character').offset().left + config.characterWidth;
+	this.leftPos = $('.character').position().left + config.characterWidth;
 
 	this.shoot = function() {
 		var that = this;
@@ -39,7 +39,7 @@ function RightBullet(index) {
 }
 
 function LeftBullet(index) {
-	this.leftPos = $('.character').offset().left - config.characterWidth;
+	this.leftPos = $('.character').position().left - config.characterWidth;
 
 	this.shoot = function() {
 		var that = this;

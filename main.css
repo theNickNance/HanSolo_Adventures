@@ -2,13 +2,12 @@ body {
 	overflow: hidden;
 	height: 100%;
 	width: 100%;
-	margin: 0;
-	background-color: rgb(111,106,103);
 	font-family: sans-serif;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 body.red {
-	background-color: red;
 }
 
 .container {
@@ -16,12 +15,15 @@ body.red {
 	width: 100%;
 	overflow: hidden;
 	height: 500px;
-	background-color: #fff;
+	background-color: white;
+	position: relative;
+	border: 1px solid #999;
+	border-top: none;
 }
 
 .gameOver {
 	width: 200px;
-	background-color: lightseagreen;
+	background-color: white;
 	border-radius: 5px;
 	text-align: center;
 	padding: 20px;
@@ -31,6 +33,7 @@ body.red {
 	left: 50%;
 	margin-left: -120px;
 	display: none;
+	border: 1px solid #999;
 }
 
 .gameOver .title {
@@ -52,7 +55,7 @@ body.red {
 	font-size: 28px;
 }
 
-.score, .lives, .fired, .spawned {
+.score, .lives, .level, .fired, .spawned {
 	color: rgba(0,0,0,0.8);
 	font-weight: bold;
 	margin-right: 10px;

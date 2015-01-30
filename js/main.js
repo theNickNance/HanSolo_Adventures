@@ -6,8 +6,12 @@ var bulletsArray = [];
 
 var scoreBoard = {
 	score: 0,
-	lives: 3
+	lives: 3,
+	level: 1
 };
+
+var enemyFrequency = 10;
+var enemyDirection = 5;
 
 var gameStopped = false;
 var heroUnvulnerable = false;
@@ -39,8 +43,8 @@ var gameLoop = window.setInterval(function(){
 		hero.moveChar();
 	}
   	var rand = Math.floor((Math.random() * 1000) + 1);
-  	if (rand <= 10) {
-  		if (rand <= 5) {
+  	if (rand <= enemyFrequency) {
+  		if (rand <= enemyDirection) {
   			enemiesArray.push(new EnemyLeft(enemiesArray.length));
   		} else {
   			enemiesArray.push(new EnemyRight(enemiesArray.length));
@@ -61,6 +65,7 @@ function checkCollision() {
 						enemiesArray[i].removeMe();
 						scoreBoard.score++;
 						$('.score').html(scoreBoard.score);
+						updateLevel();
 						return;
 					}
 				}
@@ -112,7 +117,6 @@ function lifeBlink() {
 
 	if (scoreBoard.lives == 0) {
 		clearInterval(gameLoop);
-		$('.spawned').html(enemiesArray.length);
 		$('.fired').html(bulletsArray.length);
 		$('.gameOver').show();
 	} else {
@@ -146,4 +150,45 @@ function lifeBlink() {
 			}
 		}, 100);
 	}
+}
+
+function updateLevel() {
+	switch(scoreBoard.score) {
+		case 20:
+			enemyFrequency = 12;
+			enemyDirection = 6;
+			config.containerHeight = 480;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+		case 40:
+			enemyFrequency = 13;
+			enemyDirection = 6;
+			config.containerHeight = 460;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+		case 60:
+			enemyFrequency = 14;
+			enemyDirection = 7;
+			config.containerHeight = 440;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+		case 80:
+			enemyFrequency = 15;
+			enemyDirection = 7;
+			config.containerHeight = 420;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+		case 100:
+			enemyFrequency = 16;
+			enemyDirection = 8;
+			config.containerHeight = 400;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+	}
+	$('.container').height(config.containerHeight);
 }
