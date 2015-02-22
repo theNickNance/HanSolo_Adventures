@@ -5,6 +5,7 @@ body {
 	font-family: sans-serif;
 	width: 1000px;
 	margin: 0 auto;
+	background-color: green;
 }
 
 body.red {
