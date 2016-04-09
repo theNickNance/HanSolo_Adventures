@@ -1,21 +1,23 @@
-function Enemy(index) {
+function Enemy(index, isAlly) {
 	this.index = index;
 	this.topPos = (Math.random() * (config.containerHeight - config.characterHeight));
 	this.speed = Math.floor((Math.random() * 10) + 1);
 	this.enemyType = Math.floor((Math.random() * 3) + 0);
 	this.interval;
+	this.isAlly = isAlly;
 	this.removeMe = function() {
 		this.enemy.remove();
 		clearInterval(this.interval);
 		enemiesArray[this.index] = null;
-	}
+	};
+	this.cssClass = (isAlly) ? 'ally' : config.enemies[this.enemyType];
 }
 
-function EnemyLeft(index) {
-	Enemy.call(this, index);
+function EnemyLeft(index, isAlly) {
+	Enemy.call(this, index, isAlly);
 
 	this.leftPos = $('.container').width();
-	this.enemy = $('<div class="enemy"><div class="' + config.enemies[this.enemyType] + '"></div></div>');
+	this.enemy = $('<div class="enemy"><div class="' + this.cssClass + '"></div></div>');
 	this.attack = function() {
 		var that = this;
 
@@ -39,11 +41,11 @@ function EnemyLeft(index) {
 	this.attack();
 }
 
-function EnemyRight(index) {
-	Enemy.call(this, index);
+function EnemyRight(index, isAlly) {
+	Enemy.call(this, index, isAlly);
 
 	this.leftPos = (0 - config.characterWidth);
-	this.enemy = $('<div class="enemy right"><div class="' + config.enemies[this.enemyType] + '"></div></div>');
+	this.enemy = $('<div class="enemy right"><div class="' + this.cssClass + '"></div></div>');
 	this.attack = function() {
 		var that = this;
 		var end = $('.container').width();

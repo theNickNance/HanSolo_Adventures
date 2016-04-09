@@ -7,7 +7,8 @@ body {
 	margin: 0 auto;
 }
 
-body.red {
+body.red .container {
+	border-color: red;
 }
 
 .container {
@@ -17,7 +18,8 @@ body.red {
 	height: 500px;
 	background-color: white;
 	position: relative;
-	border: 1px solid #999;
+	border: 3px solid #999;
+	border-radius: 0 0 3px 3px;
 	border-top: none;
 }
 
@@ -144,7 +146,7 @@ body.red {
 		4em 0 0 black,
 		-2em 0 0 rgb(250,185,120),
 		-1em 0 0 rgb(250,185,120),
-		
+
 		-4em 1em 0 rgb(220,220,180),
 		-3em 1em 0 black,
 		-2em 1em 0 rgb(220,220,180),
@@ -369,7 +371,7 @@ body.red {
 
 .enemy.right .vader {
 	transform: rotateY(180deg);
-	left: 20px;
+	left: 12px;
 }
 
 .storm-trooper {
@@ -503,7 +505,7 @@ body.red {
 	width: 1em;
 	position: absolute;
 	top: 23px;
-	left: 35px;
+	left: 52px;
 	font-size: 4px;
 
 	box-shadow:
@@ -662,6 +664,144 @@ body.red {
 .enemy.right .fet, .enemy.right .storm-trooper {
 	transform: rotateY(180deg);
 	left: 7px;
+}
+
+.ally {
+	height: 1em;
+	width: 1em;
+	position: absolute;
+	top: 40px;
+	left: 38px;
+	font-size: 4px;
+	transform: rotateY(180deg);
+
+	box-shadow:
+
+		-2em -9em 0 rgb(117,76,36),
+		-1em -9em 0 rgb(117,76,36),
+		0 -9em 0 rgb(117,76,36),
+
+		-3em -8em 0 rgb(117,76,36),
+		-2em -8em 0 rgb(117,76,36),
+		-1em -8em 0 rgb(252,198,137),
+		0 -8em 0 rgb(117,76,36),
+		1em -8em 0 rgb(117,76,36),
+
+		-5em -7em 0 rgb(117,76,36),
+		-4em -7em 0 rgb(117,76,36),
+		-3em -7em 0 rgb(117,76,36),
+		-2em -7em 0 rgb(252,198,137),
+		-1em -7em 0 rgb(252,198,137),
+		0 -7em 0 rgb(252,198,137),
+		1em -7em 0 rgb(117,76,36),
+		2em -7em 0 rgb(117,76,36),
+		3em -7em 0 rgb(117,76,36),
+
+		-5em -6em 0 rgb(117,76,36),
+		-4em -6em 0 rgb(117,76,36),
+		-3em -6em 0 rgb(252,198,137),
+		-2em -6em 0 rgb(3,3,3),
+		-1em -6em 0 rgb(252,198,137),
+		0 -6em 0 rgb(3,3,3),
+		1em -6em 0 rgb(252,198,137),
+		2em -6em 0 rgb(117,76,36),
+		3em -6em 0 rgb(117,76,36),
+
+		-4em -5em 0 rgb(117,76,36),
+		-3em -5em 0 rgb(252,198,137),
+		-2em -5em 0 rgb(252,198,137),
+		-1em -5em 0 rgb(252,198,137),
+		0 -5em 0 rgb(252,198,137),
+		1em -5em 0 rgb(252,198,137),
+		2em -5em 0 rgb(117,76,36),
+
+		-2em -4em 0 rgb(252,198,137),
+		-1em -4em 0 rgb(242,108,79),
+		0 -4em 0 rgb(242,108,79),
+		6em -4em 0 rgb(3,3,3),
+		7em -4em 0 rgb(3,3,3),
+		8em -4em 0 rgb(3,3,3),
+		9em -4em 0 rgb(3,3,3),
+		10em -4em 0 rgb(3,3,3),
+
+		-2em -3em 0 rgb(180,226,245),
+		-1em -3em 0 rgb(180,226,245),
+		4em -3em 0 rgb(3,3,3),
+		5em -3em 0 rgb(3,3,3),
+		6em -3em 0 rgb(3,3,3),
+		7em -3em 0 rgb(3,3,3),
+		8em -3em 0 rgb(3,3,3),
+
+		-3em -2em 0 rgb(180,226,245),
+		-2em -2em 0 rgb(180,226,245),
+		-1em -2em 0 rgb(180,226,245),
+		0 -2em 0 rgb(180,226,245),
+		1em -2em 0 rgb(180,226,245),
+		2em -2em 0 rgb(180,226,245),
+		3em -2em 0 rgb(180,226,245),
+		4em -2em 0 rgb(180,226,245),
+		5em -2em 0 rgb(252,198,137),
+
+		-4em -1em 0 rgb(180,226,245),
+		-3em -1em 0 rgb(180,226,245),
+		-2em -1em 0 rgb(180,226,245),
+		-1em -1em 0 rgb(180,226,245),
+		0 -1em 0 rgb(180,226,245),
+		2em -1em 0 rgb(180,226,245),
+		3em -1em 0 rgb(180,226,245),
+		4em -1em 0 rgb(180,226,245),
+		5em -1em 0 rgb(3,3,3),
+
+		-5em 0 0 rgb(180,226,245),
+		-4em 0 0 rgb(180,226,245),
+		-2em 0 0 rgb(117,76,36),
+		-1em 0 0 rgb(117,76,36),
+		4em 0 0 rgb(180,226,245),
+
+		-6em 1em 0 rgb(180,226,245),
+		-5em 1em 0 rgb(180,226,245),
+		-2em 1em 0 rgb(180,226,245),
+		-1em 1em 0 rgb(180,226,245),
+
+		-6em 2em 0 rgb(180,226,245),
+		-5em 2em 0 rgb(252,198,137),
+		-3em 2em 0 rgb(180,226,245),
+		-2em 2em 0 rgb(180,226,245),
+		-1em 2em 0 rgb(180,226,245),
+		0 2em 0 rgb(180,226,245),
+
+		-3em 3em 0 rgb(180,226,245),
+		-2em 3em 0 rgb(180,226,245),
+		-1em 3em 0 rgb(180,226,245),
+		0 3em 0 rgb(180,226,245),
+
+		-4em 4em 0 rgb(180,226,245),
+		-3em 4em 0 rgb(180,226,245),
+		-2em 4em 0 rgb(180,226,245),
+		-1em 4em 0 rgb(180,226,245),
+		0 4em 0 rgb(180,226,245),
+
+		-4em 5em 0 rgb(180,226,245),
+		-3em 5em 0 rgb(180,226,245),
+		-2em 5em 0 rgb(180,226,245),
+		-1em 5em 0 rgb(180,226,245),
+		0 5em 0 rgb(180,226,245),
+
+		-4em 6em 0 rgb(180,226,245),
+		-3em 6em 0 rgb(180,226,245),
+		-2em 6em 0 rgb(180,226,245),
+		-1em 6em 0 rgb(180,226,245),
+		0 6em 0 rgb(180,226,245),
+
+		-3em 7em 0 rgb(180,226,245),
+		-2em 7em 0 rgb(180,226,245),
+		0 7em 0 rgb(180,226,245),
+		1em 7em 0 rgb(180,226,245);
+}
+
+.enemy.right .ally {
+	transform: none;
+	left: 22px;
 }
 
 .remove {

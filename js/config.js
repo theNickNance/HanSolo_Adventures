@@ -10,3 +10,8 @@ var config = {
 	bulletWidth: 20,
 	enemies: ['vader', 'storm-trooper', 'fet']
 };
+
+var events = {
+	judgeCreationEvent: new Event('judgeCreation'),
+	checkCollisionEvent: new Event('checkCollision')
+}

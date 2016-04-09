@@ -39,7 +39,7 @@ function RightBullet(index) {
 }
 
 function LeftBullet(index) {
-	this.leftPos = $('.character').position().left - config.characterWidth;
+	this.leftPos = $('.character').position().left - config.bulletWidth;
 
 	this.shoot = function() {
 		var that = this;
