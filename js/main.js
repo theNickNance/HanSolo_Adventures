@@ -1,4 +1,4 @@
-//GLOBAL GAME VARIABLES
+// GLOBAL GAME VARIABLES
 var keys = {};
 
 var enemiesArray = [];
@@ -10,77 +10,105 @@ var scoreBoard = {
 	level: 1
 };
 
+var creationNumber;
 var enemyFrequency = 10;
 var enemyDirection = 5;
+var allyFrequency = 1;
+var allyDirection = 1;
 
 var gameStopped = false;
 var heroUnvulnerable = false;
 
 var hero = new Hero();
 
-//KEY EVENTS
+// EVENTS
 document.addEventListener('keydown', function (e) {
 	keys[e.which] = true;
 });
 
 document.addEventListener('keyup', function (e) {
-	if (e.which == 37) {
-		if (hero.isRotated) {
-			bulletsArray.push(new LeftBullet(bulletsArray.length));
+	if (!gameStopped) {
+		if (e.which == 37) {
+			if (hero.isRotated) {
+				bulletsArray.push(new LeftBullet(bulletsArray.length));
+			} else {
+				bulletsArray.push(new RightBullet(bulletsArray.length));
+			}
+		} else if (e.which == 38) {
+			hero.rotateCharacter();
 		} else {
-			bulletsArray.push(new RightBullet(bulletsArray.length));
+			delete keys[e.which];
 		}
-	} else if (e.which == 38) {
-		hero.rotateCharacter();
 	} else {
 		delete keys[e.which];
 	}
 });
 
-//MAIN GAME LOOP
-var gameLoop = window.setInterval(function(){
+document.addEventListener('judgeCreation', function(e) {
 	if (!gameStopped) {
-		hero.moveChar();
+		var rand = Math.floor((Math.random() * 1000) + 1);
+		if (rand <= enemyFrequency) {
+			if (rand <= allyFrequency) {
+				if (rand <= allyDirection) {
+					enemiesArray.push(new EnemyLeft(enemiesArray.length, true));
+				} else {
+					enemiesArray.push(new EnemyRight(enemiesArray.length, true));
+				}
+			} else {
+				if (rand <= enemyDirection) {
+					enemiesArray.push(new EnemyLeft(enemiesArray.length, false));
+				} else {
+					enemiesArray.push(new EnemyRight(enemiesArray.length, false));
+				}
+			}
+		}
 	}
-  	var rand = Math.floor((Math.random() * 1000) + 1);
-  	if (rand <= enemyFrequency) {
-  		if (rand <= enemyDirection) {
-  			enemiesArray.push(new EnemyLeft(enemiesArray.length));
-  		} else {
-  			enemiesArray.push(new EnemyRight(enemiesArray.length));
-  		}
-  	}
+});
 
-  	checkCollision();
-}, 0);
-
-//COLLISION DETECTION
-function checkCollision() {
+document.addEventListener('checkCollision', function(e){
 	for (var i = 0; i < enemiesArray.length; i++) {
 		if (enemiesArray[i] != null) {
 			for (var j = 0; j < bulletsArray.length; j++) {
 				if (bulletsArray[j] != null) {
 					if (collision([bulletsArray[j].leftPos, bulletsArray[j].topPos], [enemiesArray[i].leftPos, enemiesArray[i].topPos])) {
-						bulletsArray[j].removeMe();
-						enemiesArray[i].removeMe();
-						scoreBoard.score++;
-						$('.score').html(scoreBoard.score);
-						updateLevel();
-						return;
+						if (enemiesArray[i].isAlly) {
+							bulletsArray[j].removeMe();
+							enemiesArray[i].removeMe();
+							lifeBlink();
+						} else {
+							bulletsArray[j].removeMe();
+							enemiesArray[i].removeMe();
+							scoreBoard.score++;
+							$('.score').html(scoreBoard.score);
+							updateLevel();
+							return;
+						}
 					}
 				}
 			}
 
 			if (!heroUnvulnerable) {
 				if (collisionCharacter([hero.posLeft, hero.posTop], [enemiesArray[i].leftPos, enemiesArray[i].topPos])) {
-					enemiesArray[i].removeMe();
-					lifeBlink();
+					if (!enemiesArray[i].isAlly) {
+						enemiesArray[i].removeMe();
+						lifeBlink();
+					}
 				}
 			}
 		}
 	}
-}
+});
 
+// MAIN GAME LOOP
+var gameLoop = window.setInterval(function(){
+	if (!gameStopped) {
+		hero.moveChar();
+	}
+	document.dispatchEvent(events.judgeCreationEvent);
+	document.dispatchEvent(events.checkCollisionEvent);
+}, 0);
+
+// COLLISION DETECTION
 function collision(bullet, enemy) {
 
 	var x1 = bullet[0];
@@ -117,6 +145,7 @@ function lifeBlink() {
 
 	if (scoreBoard.lives == 0) {
 		clearInterval(gameLoop);
+		$('body').addClass('red');
 		$('.fired').html(bulletsArray.length);
 		$('.gameOver').show();
 	} else {
@@ -129,11 +158,15 @@ function lifeBlink() {
 
 		window.setTimeout(function(){
 			gameStopped = false;
-		}, 1000);
+		}, 3000);
 
 		window.setTimeout(function(){
 			$('body').removeClass('red');
-		}, 1000);
+		}, 3000);
+
+		window.setTimeout(function(){
+			heroUnvulnerable = false;
+		}, 3500);
 
 		var charBlink = window.setInterval(function(){
 			if (times) {
@@ -145,7 +178,6 @@ function lifeBlink() {
 				}
 			} else {
 				hero.el.removeClass('dim');
-				heroUnvulnerable = false;
 				clearInterval(charBlink);
 			}
 		}, 100);
