@@ -1,41 +1,43 @@
 body {
-	overflow: hidden;
-	height: 100%;
-	width: 100%;
 	font-family: sans-serif;
 	width: 1000px;
 	margin: 0 auto;
+	padding-top: 100px;
 }
 
-body.red .container {
+body.red .lives {
+	color: red;
+}
+body.red .han-solo-container {
 	border-color: red;
 }
 
-.container {
-	max-height: 100%;
+.han-solo-container {
 	width: 100%;
 	overflow: hidden;
 	height: 500px;
 	background-color: white;
 	position: relative;
-	border: 3px solid #999;
-	border-radius: 0 0 3px 3px;
-	border-top: none;
+	margin-top: 10px;
+	box-sizing: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .gameOver {
 	width: 200px;
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 3px;
 	text-align: center;
 	padding: 20px;
 	color: rgba(0,0,0,0.5);
 	position: absolute;
-	top: 100px;
+	top: 20%;
 	left: 50%;
 	margin-left: -120px;
 	display: none;
 	border: 1px solid #999;
+	z-index: 100;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 
 .gameOver .title {
@@ -51,16 +53,28 @@ body.red .container {
 	font-weight: bold;
 }
 
+.warning {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: red;
+	color: white;
+	padding: 10px;
+	border-radius: 3px;
+	z-index: 10;
+	display: none;
+}
+
 .scoreboard {
-	padding: 20px;
+	padding: 20px 0;
 	color: rgba(0,0,0,0.5);
 	font-size: 28px;
 }
 
-.score, .lives, .level, .fired, .spawned {
+.number {
 	color: rgba(0,0,0,0.8);
 	font-weight: bold;
-	margin-right: 10px;
 }
 
 .createdBy {
@@ -70,7 +84,7 @@ body.red .container {
 
 .character {
 	height: 75px;
-	width: 65px;
+	width: 26px;
 	position: absolute;
 	top: 200px;
 	left: 300px;
@@ -81,12 +95,89 @@ body.red .container {
 	opacity: 0.3;
 }
 
+.controls {
+	padding: 10px;
+	color: rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(0,0,0,0.1);
+}
+
+.controls .right {
+	float: right;
+}
+
+.legend .group {
+	border: 1px solid rgba(0,0,0,0.1);
+	margin: 10px 10px 10px 0;
+	padding: 5px 10px 10px;
+	display: inline-block;
+}
+
+.group .group-title {
+	width: 100%;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: rgba(0,0,0,0.8);
+}
+
+.group .character {
+	position: relative;
+	top: 0;
+  left: 0;
+	margin-right: 35px;
+	margin-left: 5px;
+}
+
+.group .enemy {
+	position: relative;
+	float: left;
+}
+
+.group .enemy.right {
+	margin-right: 30px;
+	margin-left: 5px;
+}
+
+.group .enemy-fet {
+	margin-left: 50px;
+	margin-right: 20px;
+}
+
+.group .enemy-storm-trooper {
+	margin-left: 30px;
+}
+
+.start-menu {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	z-index: 100;
+}
+
+.start-button {
+	border: none;
+	background: green;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.start-button:hover,
+.start-button:focus {
+	background: darkgreen;
+}
+
 .han-solo {
 	height: 1em;
 	width: 1em;
 	position: absolute;
 	top: 35px;
-	right: 40px;
+	right: 5px;
 	font-size: 4px;
 
 	/* Body */
@@ -204,7 +295,7 @@ body.red .container {
 
 .character.rotate .han-solo {
 	transform: rotateY(180deg);
-	right: 20px;
+	right: 18px;
 }
 
 .bullet {
@@ -219,10 +310,16 @@ body.red .container {
 
 .enemy {
 	height: 75px;
-	width: 45px;
+	width: 36px;
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+.enemy.die {
+	transition: 0.1s;
+	opacity: 0;
+	transform: scale(1.1, 1.05);
 }
 
 .vader {
@@ -230,7 +327,7 @@ body.red .container {
 	width: 1em;
 	position: absolute;
 	top: 35px;
-	left: 28px;
+	left: 20px;
 	font-size: 4px;
 
 	box-shadow:
@@ -379,7 +476,7 @@ body.red .container {
 	width: 1em;
 	position: absolute;
 	top: 30px;
-	left: 33px;
+	left: 22px;
 	font-size: 4px;
 
 	/* Body */
@@ -505,7 +602,7 @@ body.red .container {
 	width: 1em;
 	position: absolute;
 	top: 23px;
-	left: 52px;
+	left: 24px;
 	font-size: 4px;
 
 	box-shadow:
@@ -661,9 +758,14 @@ body.red .container {
 		-2em 12em 0 rgb(54,54,54);
 }
 
-.enemy.right .fet, .enemy.right .storm-trooper {
+.enemy.right .fet {
 	transform: rotateY(180deg);
 	left: 7px;
+}
+
+.enemy.right .storm-trooper {
+	transform: rotateY(180deg);
+	left: 10px;
 }
 
 .ally {
@@ -671,7 +773,7 @@ body.red .container {
 	width: 1em;
 	position: absolute;
 	top: 40px;
-	left: 38px;
+	left: 12px;
 	font-size: 4px;
 	transform: rotateY(180deg);
 
@@ -801,7 +903,7 @@ body.red .container {
 
 .enemy.right .ally {
 	transform: none;
-	left: 22px;
+	left: 20px;
 }
 
 .remove {

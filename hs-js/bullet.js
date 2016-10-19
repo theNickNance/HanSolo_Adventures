@@ -13,15 +13,15 @@ function Bullet(index) {
 }
 
 function RightBullet(index) {
-	this.leftPos = $('.character').position().left + config.characterWidth;
+	this.leftPos = $('.character').position().left + config.characterWidth + 35;
 
 	this.shoot = function() {
 		var that = this;
-		var end = $('.container').width();
+		var end = $('.han-solo-container').width() - config.enemyWidth;
 
 		this.bullet.css('left', that.leftPos + 'px');
 		this.bullet.css('top', that.topPos + 'px');
-		this.bullet.appendTo('.container');
+		this.bullet.appendTo('.han-solo-container');
 
 		that.interval = window.setInterval(function(){
 			if (that.leftPos > end) {
@@ -39,15 +39,15 @@ function RightBullet(index) {
 }
 
 function LeftBullet(index) {
-	this.leftPos = $('.character').position().left - config.bulletWidth;
+	this.leftPos = $('.character').position().left - 35 - config.bulletWidth;
 
 	this.shoot = function() {
 		var that = this;
-		var end = 0;
+		var end = config.enemyWidth;
 
 		this.bullet.css('left', that.leftPos + 'px');
 		this.bullet.css('top', that.topPos + 'px');
-		this.bullet.appendTo('.container');
+		this.bullet.appendTo('.han-solo-container');
 
 		that.interval = window.setInterval(function(){
 			if (that.leftPos < end) {

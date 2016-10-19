@@ -2,35 +2,61 @@
 	<head>
 		<title>Test Game</title>
 
-		<link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="stylesheet" type="text/css" href="hs-css/main.css">
 	</head>
 	<body>
-		<div class="container">
+
+		<div class="controls">
+			<div class="right">
+				Movement:&nbsp;<span class="number">W</span>,&nbsp;<span class="number">A</span>,&nbsp;<span class="number">S</span>,&nbsp;<span class="number">D</span>&nbsp;&nbsp;&nbsp;
+				Shoot:&nbsp;<span class="number">&larr;</span>&nbsp;&nbsp;&nbsp;
+				Rotate:&nbsp;<span class="number">&uarr;</span>
+			</div>
+			<div>
+				Score:&nbsp;<span class="number score">0</span>&nbsp;&nbsp;
+				Lives:&nbsp;<span class="number lives">3</span>&nbsp;&nbsp;
+				Level:&nbsp;<span class="number level">1</span>
+			</div>
 		</div>
 
-		<div class="scoreboard">
-			Score <span class="score">0</span>
-			Lives <span class="lives">3</span>
-			Level <span class="level">1</span>
-
-			<span class="createdBy">Created by Nick Nance</span>
+		<div class="han-solo-container">
+			<div class="start-menu">
+				<button class="start-button">Start game!</button>
+			</div>
+			<div class="gameOver">
+				<div class="title">Game Over</div>
+				Enemies killed: <span class="number score">0</span></br></br>
+				Bullets fired: <span class="number fired">0</span></br></br>
+				Friendly fire casualties: <span class="number friendlyFire">0</span>
+				<div class="refresh">Refresh to play again</div>
+			</div>
+			<div class="warning ff-warning">
+				Don't shoot the Princess!
+			</div>
 		</div>
 
-		<div class="gameOver">
-			<div class="title">Game Over</div>
-			Enemies Killed: <span class="score">0</span></br></br>
-			Bullets Fired: <span class="fired">0</span>
-			<div class="refresh">Refresh to play again</div>
+		<div class="legend">
+			<div class="group green">
+				<div class="group-title">You</div>
+				<div class="character"><div class="han-solo"></div></div>
+			</div>
+			<div class="group green">
+				<div class="group-title">Friendly</div>
+				<div class="enemy right"><div class="ally"></div></div>
+			</div>
+			<div class="group red">
+				<div class="group-title">Enemies</div>
+				<div class="enemy enemy-storm-trooper"><div class="storm-trooper"></div></div>
+				<div class="enemy enemy-fet"><div class="fet"></div></div>
+				<div class="enemy"><div class="vader"></div></div>
+			</div>
 		</div>
 
-		<div></div>
-
-
-		<script src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/config.js"></script>
-		<script src="js/hero.js"></script>
-		<script src="js/enemy.js"></script>
-		<script src="js/bullet.js"></script>
-		<script src="js/main.js"></script>
+		<script src="hs-js/jquery-2.1.1.min.js"></script>
+		<script src="hs-js/config.js"></script>
+		<script src="hs-js/hero.js"></script>
+		<script src="hs-js/enemy.js"></script>
+		<script src="hs-js/bullet.js"></script>
+		<script src="hs-js/main.js"></script>
 	</body>
 </html>
