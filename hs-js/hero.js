@@ -4,9 +4,9 @@ function Hero() {
 	this.posTop = 0;
 	this.isRotated = false;
 	this.init = function() {
-		this.posLeft = ($('.container').width() / 2) - (config.characterWidth / 2);
+		this.posLeft = ($('.han-solo-container').width() / 2) - (config.characterWidth / 2);
 		this.posTop = (config.containerHeight / 2) - (config.characterHeight / 2);
-		$('.container').append(this.el);
+		$('.han-solo-container').append(this.el);
 		this.el.css('left', this.posLeft);
 		this.el.css('top', this.posTop);
 	}
@@ -21,7 +21,7 @@ function Hero() {
 	};
 	this.moveChar = function() {
 		if (keys['68']) {
-			if (this.posLeft != ($('.container').width() - config.characterWidth)) {
+			if (this.posLeft != ($('.han-solo-container').width() - config.characterWidth)) {
 				this.moveRight();
 			}
 		}
@@ -46,8 +46,8 @@ function Hero() {
 	};
 	this.moveRight = function() {
 		var pos = this.posLeft + config.moveDistance;
-		if (pos > ($('.container').width() - config.characterWidth)) {
-			pos = $('.container').width() - config.characterWidth;
+		if (pos > ($('.han-solo-container').width() - config.characterWidth)) {
+			pos = $('.han-solo-container').width() - config.characterWidth;
 		}
 		this.el.css('left', pos + 'px');
 		this.posLeft = pos;

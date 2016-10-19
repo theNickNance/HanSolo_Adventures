@@ -7,16 +7,17 @@ var bulletsArray = [];
 var scoreBoard = {
 	score: 0,
 	lives: 3,
-	level: 1
+	level: 1,
+	friendlyFire: 0
 };
 
 var creationNumber;
-var enemyFrequency = 10;
-var enemyDirection = 5;
-var allyFrequency = 1;
+var enemyFrequency = 2;
+var enemyDirection = 1;
+var allyFrequency = 2;
 var allyDirection = 1;
 
-var gameStopped = false;
+var gameStopped = true;
 var heroUnvulnerable = false;
 
 var hero = new Hero();
@@ -24,9 +25,7 @@ var hero = new Hero();
 // EVENTS
 document.addEventListener('keydown', function (e) {
 	keys[e.which] = true;
-});
 
-document.addEventListener('keyup', function (e) {
 	if (!gameStopped) {
 		if (e.which == 37) {
 			if (hero.isRotated) {
@@ -35,31 +34,34 @@ document.addEventListener('keyup', function (e) {
 				bulletsArray.push(new RightBullet(bulletsArray.length));
 			}
 		} else if (e.which == 38) {
+			e.preventDefault();
 			hero.rotateCharacter();
-		} else {
-			delete keys[e.which];
 		}
-	} else {
-		delete keys[e.which];
 	}
+});
+
+document.addEventListener('keyup', function (e) {
+	delete keys[e.which];
 });
 
 document.addEventListener('judgeCreation', function(e) {
 	if (!gameStopped) {
-		var rand = Math.floor((Math.random() * 1000) + 1);
-		if (rand <= enemyFrequency) {
-			if (rand <= allyFrequency) {
-				if (rand <= allyDirection) {
-					enemiesArray.push(new EnemyLeft(enemiesArray.length, true));
-				} else {
-					enemiesArray.push(new EnemyRight(enemiesArray.length, true));
-				}
+		var allyRoll = Math.floor((Math.random() * 15000) + 1); //generate number between 1 and 15000
+		var enemyRoll = Math.floor((Math.random() * 1000) + 1); //generate number between 1 and 1500
+
+		if (allyRoll <= allyFrequency) {
+			if (allyRoll <= allyDirection) {
+				enemiesArray.push(new EnemyLeft(enemiesArray.length, true));
 			} else {
-				if (rand <= enemyDirection) {
-					enemiesArray.push(new EnemyLeft(enemiesArray.length, false));
-				} else {
-					enemiesArray.push(new EnemyRight(enemiesArray.length, false));
-				}
+				enemiesArray.push(new EnemyRight(enemiesArray.length, true));
+			}
+		}
+
+		if (enemyRoll <= enemyFrequency) {
+			if (enemyRoll <= enemyDirection) {
+				enemiesArray.push(new EnemyLeft(enemiesArray.length, false));
+			} else {
+				enemiesArray.push(new EnemyRight(enemiesArray.length, false));
 			}
 		}
 	}
@@ -74,15 +76,16 @@ document.addEventListener('checkCollision', function(e){
 						if (enemiesArray[i].isAlly) {
 							bulletsArray[j].removeMe();
 							enemiesArray[i].removeMe();
-							lifeBlink();
+							scoreBoard.friendlyFire++;
+							lifeBlink(true);
 						} else {
 							bulletsArray[j].removeMe();
 							enemiesArray[i].removeMe();
 							scoreBoard.score++;
 							$('.score').html(scoreBoard.score);
 							updateLevel();
-							return;
 						}
+						return;
 					}
 				}
 			}
@@ -90,8 +93,7 @@ document.addEventListener('checkCollision', function(e){
 			if (!heroUnvulnerable) {
 				if (collisionCharacter([hero.posLeft, hero.posTop], [enemiesArray[i].leftPos, enemiesArray[i].topPos])) {
 					if (!enemiesArray[i].isAlly) {
-						enemiesArray[i].removeMe();
-						lifeBlink();
+						lifeBlink(false, enemiesArray[i]);
 					}
 				}
 			}
@@ -103,10 +105,15 @@ document.addEventListener('checkCollision', function(e){
 var gameLoop = window.setInterval(function(){
 	if (!gameStopped) {
 		hero.moveChar();
+		document.dispatchEvent(events.judgeCreationEvent);
+		document.dispatchEvent(events.checkCollisionEvent);
 	}
-	document.dispatchEvent(events.judgeCreationEvent);
-	document.dispatchEvent(events.checkCollisionEvent);
 }, 0);
+
+document.getElementsByClassName('start-button')[0].addEventListener('click', function() {
+	document.getElementsByClassName('start-menu')[0].style.display = 'none';
+	gameStopped = false;
+});
 
 // COLLISION DETECTION
 function collision(bullet, enemy) {
@@ -141,27 +148,30 @@ function collisionCharacter(character, enemy) {
 	return true;
 }
 
-function lifeBlink() {
+function lifeBlink(isFriendlyFire, toRemove) {
 
-	if (scoreBoard.lives == 0) {
-		clearInterval(gameLoop);
-		$('body').addClass('red');
-		$('.fired').html(bulletsArray.length);
-		$('.gameOver').show();
+	scoreBoard.lives -= 1;
+
+	if (scoreBoard.lives === 1) {
+		endGame();
 	} else {
 		var times = 20;
 		gameStopped = true;
 		heroUnvulnerable = true;
-		scoreBoard.lives -= 1;
 		$('.lives').html(scoreBoard.lives);
 		$('body').addClass('red');
+		if (isFriendlyFire) {
+			$('.ff-warning').show();
+		}
 
 		window.setTimeout(function(){
 			gameStopped = false;
-		}, 3000);
-
-		window.setTimeout(function(){
 			$('body').removeClass('red');
+			if (isFriendlyFire) {
+				$('.ff-warning').hide();
+			} else if (toRemove) {
+				toRemove.removeMe();
+			}
 		}, 3000);
 
 		window.setTimeout(function(){
@@ -186,41 +196,56 @@ function lifeBlink() {
 
 function updateLevel() {
 	switch(scoreBoard.score) {
+		case 5:
+			enemyFrequency = 4;
+			enemyDirection = 2;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
+		case 10:
+			enemyFrequency = 6;
+			enemyDirection = 3;
+			scoreBoard.level++;
+			$('.level').html(scoreBoard.level);
+			break;
 		case 20:
-			enemyFrequency = 12;
-			enemyDirection = 6;
-			config.containerHeight = 480;
+			enemyFrequency = 8;
+			enemyDirection = 4;
 			scoreBoard.level++;
 			$('.level').html(scoreBoard.level);
 			break;
 		case 40:
-			enemyFrequency = 13;
-			enemyDirection = 6;
-			config.containerHeight = 460;
+			enemyFrequency = 10;
+			enemyDirection = 5;
 			scoreBoard.level++;
 			$('.level').html(scoreBoard.level);
 			break;
 		case 60:
-			enemyFrequency = 14;
-			enemyDirection = 7;
-			config.containerHeight = 440;
+			enemyFrequency = 12;
+			enemyDirection = 6;
 			scoreBoard.level++;
 			$('.level').html(scoreBoard.level);
 			break;
 		case 80:
-			enemyFrequency = 15;
+			enemyFrequency = 14;
 			enemyDirection = 7;
-			config.containerHeight = 420;
 			scoreBoard.level++;
 			$('.level').html(scoreBoard.level);
 			break;
 		case 100:
 			enemyFrequency = 16;
 			enemyDirection = 8;
-			config.containerHeight = 400;
 			scoreBoard.level++;
 			$('.level').html(scoreBoard.level);
 			break;
 	}
-	$('.container').height(config.containerHeight);
+	// $('.han-solo-container').outerHeight(config.containerHeight);
+}
+
+function endGame() {
+	clearInterval(gameLoop);
+	$('body').addClass('red');
+	$('.fired').html(bulletsArray.length);
+	$('.friendlyFire').html(scoreBoard.friendlyFire);
+	$('.gameOver').show();
 }

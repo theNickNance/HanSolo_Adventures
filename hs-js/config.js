@@ -3,9 +3,9 @@ var config = {
 	rotateDistance: 1,
 	containerHeight: 500,
 	characterHeight: 75,
-	characterWidth: 65,
+	characterWidth: 26,
 	enemyHeight: 75,
-	enemyWidth: 45,
+	enemyWidth: 36,
 	bulletHeight: 4,
 	bulletWidth: 20,
 	enemies: ['vader', 'storm-trooper', 'fet']
