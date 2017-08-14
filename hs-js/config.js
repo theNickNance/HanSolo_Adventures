@@ -7,8 +7,8 @@ var config = {
 	enemyHeight: 75,
 	enemyWidth: 36,
 	bulletHeight: 4,
-	bulletWidth: 20,
-	enemies: ['vader', 'storm-trooper', 'fet']
+	bulletWidth: 40,
+	enemies: ['ghost-purple', 'ghost-orange', 'ghost-blue']
 };
 
 var events = {

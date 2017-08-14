@@ -1,7 +1,7 @@
 function Bullet(index) {
 	this.index = index;
 	this.bullet = $('<div class="bullet"></div>');
-	this.topPos = $('.character').position().top + (config.characterHeight / 2) - (config.bulletHeight / 2);
+	this.topPos = $('.character').position().top + (config.characterHeight / 2) - (config.bulletHeight / 2) - 5;
 	this.interval;
 	this.removeMe = function() {
 		this.bullet.remove();

@@ -14,7 +14,7 @@ var scoreBoard = {
 var creationNumber;
 var enemyFrequency = 2;
 var enemyDirection = 1;
-var allyFrequency = 2;
+var allyFrequency = 3;
 var allyDirection = 1;
 
 var gameStopped = true;
@@ -152,7 +152,8 @@ function lifeBlink(isFriendlyFire, toRemove) {
 
 	scoreBoard.lives -= 1;
 
-	if (scoreBoard.lives === 1) {
+	if (scoreBoard.lives === 0) {
+		$('.lives').html(scoreBoard.lives);
 		endGame();
 	} else {
 		var times = 20;

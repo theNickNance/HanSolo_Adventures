@@ -1,5 +1,5 @@
 function Hero() {
-	this.el = $('<div class="character"><div class="han-solo"></div></div>');
+	this.el = $('<div class="character"><div class="buzz"></div></div>');
 	this.posLeft = 0;
 	this.posTop = 0;
 	this.isRotated = false;
